@@ -4,6 +4,7 @@
     <!--{% load static %}-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/logoblue.png" type="image/x-icon">
     <!--<title>{% block title %} {% endblock %}</title>-->
     <title>Redmi Aq'ab'al</title>
     @vite('resources/css/app.css')
@@ -34,12 +35,12 @@
             <div class="block lg:hidden w-1/6 lg:w-4/6">
                 <a href="#" class="link" id="mobile-menu"><img src="icons/menu.svg" class="items-center" alt=""></a>
 
-                <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-violet-500">
-                    <li><a href="{{url('/')}}" class="link"><img src="icons/start.svg" class="inline-block mr-2" alt="">Inicio</a></li><br>
-                    <li><a href="#" class="link"><img src="icons/calendar.svg" class="inline-block mr-2" alt="">Eventos</a></li><br>
-                    <li><a href="{{url('inscribirse')}}" class="link"><img src="icons/fem.svg" class="inline-block mr-2" alt="">Programas</a></li><br>
-                    <li><a href="{{url('contacto')}}" class="link"><img src="icons/contact.svg" class="inline-block mr-2" alt="">Acerca de</a></li><br>
-                    <li><a href="#"class="link"><img src="icons/login.svg" class="inline-block mr-2" alt="">Ingresar</a></li><br>
+                <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-blue-950">
+                    <li><a href="{{url('/')}}" class="link text-amber-500 "><img src="icons/start.svg" class="inline-block mr-2" alt="">Inicio</a></li><br>
+                    <li><a href="#" class="link text-amber-500 "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">Eventos</a></li><br>
+                    <li><a href="{{url('inscribirse')}}" class="link text-amber-500 "><img src="icons/fem.svg" class="inline-block mr-2" alt="">Programas</a></li><br>
+                    <li><a href="{{url('contacto')}}" class="link text-amber-500 "><img src="icons/contact.svg" class="inline-block mr-2" alt="">Acerca de</a></li><br>
+                    <li><a href="#"class="link text-amber-500 "><img src="icons/login.svg" class="inline-block mr-2" alt="">Ingresar</a></li><br>
                 </ul>
             </div>
 
@@ -90,8 +91,6 @@
             menu.classList.toggle('hidden');
         });
 </script>
-
-<script src="{% static 'js/gestionCursos.js' %}"></script>
 
 </body>
 </html>
