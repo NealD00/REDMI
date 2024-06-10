@@ -21,10 +21,10 @@
                 <h2 >TOTONICAPAN</h2>
             </div>
             
-            <div class="links lg:block hidden w-1/6 md:w-4/6">
+            <div class="links lg:block hidden w-1/6 md:w-4/6 ">
                 <ul class="flex menu text-amber-500   items-center justify-center gap-5">
                     <li><a href="{{url('/')}}"class="link hover:text-white"><img src="icons/start.svg" class=" inline-block mr-2" alt="">INICIO</a></li><br>
-                    <li><a href="#" class="link hover:text-white "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">EVENTOS</a></li><br>
+                    <li><a href="{{url('eventos')}}" class="link hover:text-white "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">EVENTOS</a></li><br>
                     <li><a href="{{url('inscribirse')}}" class="link hover:text-white"><img src="icons/fem.svg" class="inline-block mr-2" alt="">PROGRAMA</a></li><br>
                     <li><a href="{{url('contacto')}}"class="link hover:text-white"><img src="icons/contact.svg" class="inline-block mr-2" alt="">ACERCA DE</a></li><br>
                     <li><a href="{{url('admin/login')}}"class="link hover:text-white"><img src="icons/login.svg" class="inline-block mr-2" alt="">INGRESAR</a></li><br>
@@ -37,7 +37,7 @@
 
                 <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-blue-950">
                     <li><a href="{{url('/')}}" class="link text-amber-500 "><img src="icons/start.svg" class="inline-block mr-2" alt="">Inicio</a></li><br>
-                    <li><a href="#" class="link text-amber-500 "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">Eventos</a></li><br>
+                    <li><a href="{{url('eventos')}}" class="link text-amber-500 "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">Eventos</a></li><br>
                     <li><a href="{{url('inscribirse')}}" class="link text-amber-500 "><img src="icons/fem.svg" class="inline-block mr-2" alt="">Programas</a></li><br>
                     <li><a href="{{url('contacto')}}" class="link text-amber-500 "><img src="icons/contact.svg" class="inline-block mr-2" alt="">Acerca de</a></li><br>
                     <li><a href="#"class="link text-amber-500 "><img src="icons/login.svg" class="inline-block mr-2" alt="">Ingresar</a></li><br>
@@ -58,7 +58,7 @@
             <ul>
 
                 <li><a href="{{url('/')}}" class="block py-2 hover:text-white"><img src="icons/start.svg" class="inline-block mr-2" alt="">INICIO</a></li>
-                <li><a href="#" class="block py-2 hover:text-white"><img src="icons/calendar.svg" class="inline-block mr-2" alt="">EVENTOS</a></li>
+                <li><a href="{{url('eventos')}}"class="block py-2 hover:text-white"><img src="icons/calendar.svg" class="inline-block mr-2" alt="">EVENTOS</a></li>
                 <li><a href="{{url('inscribirse')}}" class="block py-2 hover:text-white"><img src="icons/fem.svg" class="inline-block mr-2"  alt="">PROGRAMA</a></li>
                 <li><a href="{{url('contacto')}}"class="block py-2 hover:text-white"><img src="icons/contact.svg" class="inline-block mr-2" alt="">ACERCA DE</a></li>
                 <li><a href="#" class="block py-2 hover:text-white"><img src="icons/login.svg" class="inline-block mr-2" alt="">INGRESAR</a></li>

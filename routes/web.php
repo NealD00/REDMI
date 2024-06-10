@@ -26,6 +26,12 @@ Route::get('/contacto', function (){
 }) -> name ('contacto');
 
 
+Route::get('/eventos', function (){
+    return view('eventos');
+}) -> name ('eventos');
+
+
+
 //livewire sirve para funcions tipo javascript 
 //esta es una opcion de usar rutas sin necesidad de controller
 #Route::get('/contactos', \App\Http\Livewire\Contactnos::class)->name('contactanos');

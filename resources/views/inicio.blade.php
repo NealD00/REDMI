@@ -6,7 +6,8 @@
                 <img src="images/redmi1.jpg" alt="" class="w-full h-auto">
 </div>
 
-<section class="bg-[url('/public/images/fondo1.png')] bg-cover bg-center bg-no-repeat">
+<!--bg-[url('/public/images/fondo1.png')]-->
+<section class=" bg-cover bg-center bg-no-repeat">
             <div class=" xsm:w-full sm:container w-2/3 mx-auto md:flex justify-center items-center text-center py-6">
                 <div class="left xl:w-1/3 lg:w-1/2 p-5">
                     <h3 class="text-orange-600 font-black xsm:text-3xl sm:text-4xl">
@@ -31,106 +32,59 @@
 
 <div class="bg-amber-500 p-8"></div>
 <section class="bg-amber-500">
-    <div class="container mx-auto ">
-        <div class="bg-amber-500 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="container mx-auto flex justify-center">
+        <div class="bg-amber-500 grid grid-cols-1 md:grid-cols-3 justify-items-center gap-6">
+    
+        <div class="max-w-xs overflow-hidden bg-white border border-gray-200 rounded-xl shadow-md transform transition-all duration-500 hover:shadow-lg hover:scale-105 relative group">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-white opacity-0 transition-opacity duration-500 group-hover:opacity-30 blur-md">
+        </div>
+        <div class="p-6 relative z-10">
+            <img src="images/empoderamiento.jpg" >
+            <p class="text-xl font-semibold text-gray-800">EMPOWER</p>
+            <p class="mt-2 text-gray-600">
+            Our classic blue jeans are a timeless addition to your wardrobe. Crafted
+            from premium denim, they offer both style and comfort. Perfect for any
+            casual occasion.
+            </p>
+        </div>
+        </div>
 
-            
-            <div class="bg-white shadow-md rounded-lg p-4 flex flex-col items-center">
-                <img src="images/empoderamiento.jpg" alt="Ingresar" class="mb-4">
-                <h3 class="font-bold">EMPOWER</h3>
-                <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, fugit illum debitis pariatur modi magni rerum in quidem quis expedita quas eum illo aut est. At nemo aut optio obcaecati.</h1>
-            </div>
 
-            <!-- Second Division -->
-            <div class="bg-white shadow-md rounded-lg p-4 flex flex-col items-center">
-                <img src="images/salud.jpg" alt="Imprimir" class="mb-4">
-                <h3 class="font-bold">SALUD SEXUAL Y REPRODUCTIVA</h3>
-                <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum facilis, harum vel quam reiciendis minus dolore repellendus sed ullam neque placeat labore nobis quibusdam hic, perferendis facere quaerat. Harum, delectus!</h1>
-            </div>
+        <div class="max-w-xs overflow-hidden bg-white border border-gray-200 rounded-xl shadow-md transform transition-all duration-500 hover:shadow-lg hover:scale-105 relative group">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-white opacity-0 transition-opacity duration-500 group-hover:opacity-30 blur-md">   
+        </div>
+        <div class="p-6 relative z-10">
+            <img src="images/salud.jpg" >
+            <p class="text-xl font-semibold text-gray-800">SALUD SEXUAL REPRODUCTIVA</p>
+            <p class="mt-2 text-gray-600">
+            Our classic blue jeans are a timeless addition to your wardrobe. Crafted
+            from premium denim, they offer both style and comfort. Perfect for any
+            casual occasion.
+            </p>
+        </div>
+        </div>
 
-            <!-- Third Division -->
-            <div class="bg-white shadow-md rounded-lg p-4 flex flex-col items-center">
-                <img src="images/manos.jpg" alt="Crear" class="mb-4">
-                <h3 class="font-bold">MANUALIDADES</h3>
-                <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis aperiam enim mollitia voluptatum, officiis odio quia praesentium sunt quae, voluptate hic atque! Quia, molestias esse pariatur animi cumque laborum reprehenderit!</h1>
-            </div>
-
+        <div class="max-w-xs overflow-hidden bg-white border border-gray-200 rounded-xl shadow-md transform transition-all duration-500 hover:shadow-lg hover:scale-105 relative group">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-white opacity-0 transition-opacity duration-500 group-hover:opacity-30 blur-md">           
+        </div>
+        <div class="p-6 relative z-10">
+            <img src="images/manos.jpg" >
+            <p class="text-xl font-semibold text-gray-800">MANUALIDADES</p>
+            <p class="mt-2 text-gray-600">
+            Our classic blue jeans are a timeless addition to your wardrobe. Crafted
+            from premium denim, they offer both style and comfort. Perfect for any
+            casual occasion.
+            </p>
+        </div>
+        </div>
+  
         </div>
     </div>
     <div class="bg-amber-500 p-8"></div>
+</div>
 
-
-<section class="testimony bg-[url('/public/images/fondo1.png')] bg-cover bg-center bg-no-repeat p-10">
-            <div class="testimony__container container">
-                <img src="icons/leftarrow.svg" class="testimony__arrow" id="before">
-                
-                <section class="testimony__body testimony__body--show" data-id="1">
-                     <div class="testimony__texts">
-                        <h2 class="subtitle">Mi nombre es Jordan Alexander, <span class="testimony__course">estudiante de CSS</span></h2>
-                        <p class="testimony__review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque facere enim, eum ipsa est, neque natus sint nisi quaerat nobis, quibusdam consequatur porro nemo recusandae temporibus magni inventore consequuntur? Rerum?</p>
-                     </div>
-
-                     <figure class="testimony__picture">
-                        <img src="/images/face1.jpg" class="testimony__img">
-                     </figure>
-                </section>
-
-                <section class="testimony__body" data-id="2">
-                    <div class="testimony__texts">
-                       <h2 class="subtitle">Mi nombre es Mishell Smith, <span class="testimony__course">estudiante de git</span></h2>
-                       <p class="testimony__review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque facere enim, eum ipsa est, neque natus sint nisi quaerat nobis, quibusdam consequatur porro nemo recusandae temporibus magni inventore consequuntur? Rerum?</p>
-                    </div>
-
-                    <figure class="testimony__picture">
-                       <img src="/images/face2.jpg" class="testimony__img">
-                    </figure>
-               </section>
-
-               <section class="testimony__body" data-id="3">
-                <div class="testimony__texts">
-                   <h2 class="subtitle">Romeo Santos, <span class="testimony__course">estudiante de HTML</span></h2>
-                   <p class="testimony__review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque facere enim, eum ipsa est, neque natus sint nisi quaerat nobis, quibusdam consequatur porro nemo recusandae temporibus magni inventore consequuntur? Rerum?</p>
-                </div>
-
-                <figure class="testimony__picture">
-                   <img src="/images/face3.jpg" class="testimony__img">
-                </figure>
-                    </section>
-
-                <img src="icons/rightarrow.svg" class="testimony__arrow" id="next">
-
-            </div>
-
-        </section>
-
-<script>
-    const sliders = [...document.querySelectorAll('.testimony__body')];
-     const buttonNext=document.querySelector('#next');
-     const buttonBefore=document.querySelector('#before');
-     let value;
-     
-     buttonNext.addEventListener('click',()=>{
-       changePosition(1);
-     });
-
-     buttonBefore.addEventListener('click',()=>{
-        changePosition(-1);
-     });
-    
-     const changePosition=(add)=>{
-        const currentTestimony = document.querySelector('.testimony__body--show').dataset.id;
-        value = Number(currentTestimony);
-        value+= add;
-        
-        sliders[Number(currentTestimony)-1].classList.remove('testimony__body--show');
-        if(value == sliders.length+1 || value === 0){
-          value = value === 0 ? sliders.length : 1;
-        }
-
-        sliders[value-1].classList.add('testimony__body--show');
-
-     }
-</script>
-
+<section>
+    <div class="bg-[url('/public/images/fondo1.png')] p-10"></div>
+</section>
 @endsection
 
