@@ -15,10 +15,11 @@
                     </h3>
 
                     <p class="py-4 text-xl">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, molestiae! Laboriosam, molestias magnam! Eos, tenetur temporibus? Odit maiores ipsum officia asperiores tenetur consequuntur eos ab dignissimos quo. Eaque, dignissimos quos.
+                       
+                    Una organización comprometida con brindar mentorías a niñas y jóvenes del departamento de Totonicapán, enfocada en el desarrollo de habilidades esenciales para su crecimiento social y personal.
                     </p>
                     <p>
-                        <a href="{{url('contacto')}}" class="xl:text-2xl my-4 inline-block py-2 px-16 bg-amber-500  text-white font-black border-transparent border-8 rounded-3xl hover:border-blue-900  hover:bg-white hover:text-black transition duration-200 group">
+                        <a href="{{url('nosotras')}}" class="xl:text-2xl my-4 inline-block py-2 px-16 bg-amber-500  text-white font-black border-transparent border-8 rounded-3xl hover:border-blue-900  hover:bg-white hover:text-black transition duration-200 group">
                             Nosotras 
                             <span class="w-4 h-4 inline-block border-yellow-300 border-solid border-t-[5px] border-r-[5px] transition-all transform rotate-45 group-hover:border-orange-600 xl:group-hover:ml-4"></span>
                         </a>
@@ -40,11 +41,9 @@
         </div>
         <div class="p-6 relative z-10">
             <img src="images/empoderamiento.jpg" >
-            <p class="text-xl font-semibold text-gray-800">EMPOWER</p>
+            <p class="text-xl font-semibold text-blue-800 text-center">EMPODERAMIENTO</p>
             <p class="mt-2 text-gray-600">
-            Our classic blue jeans are a timeless addition to your wardrobe. Crafted
-            from premium denim, they offer both style and comfort. Perfect for any
-            casual occasion.
+            El empoderamiento femenino se refiere al proceso mediante el cual las mujeres ganan poder y control sobre sus propias vidas y se convierten en participantes activas y decisivas en los ámbitos político, económico, social y personal.
             </p>
         </div>
         </div>
@@ -55,11 +54,9 @@
         </div>
         <div class="p-6 relative z-10">
             <img src="images/salud.jpg" >
-            <p class="text-xl font-semibold text-gray-800">SALUD SEXUAL REPRODUCTIVA</p>
+            <p class="text-xl font-semibold text-blue-800 text-center">SALUD Y BIENESTAR</p>
             <p class="mt-2 text-gray-600">
-            Our classic blue jeans are a timeless addition to your wardrobe. Crafted
-            from premium denim, they offer both style and comfort. Perfect for any
-            casual occasion.
+            Promover el acceso a servicios de salud adecuados, incluyendo la salud reproductiva y el bienestar emocional y mental, lo que tiene efectos positivos a largo plazo en la sociedad.
             </p>
         </div>
         </div>
@@ -69,11 +66,9 @@
         </div>
         <div class="p-6 relative z-10">
             <img src="images/manos.jpg" >
-            <p class="text-xl font-semibold text-gray-800">MANUALIDADES</p>
+            <p class="text-xl font-semibold text-blue-800 text-center">PARTICIPACION SOCIAL</p>
             <p class="mt-2 text-gray-600">
-            Our classic blue jeans are a timeless addition to your wardrobe. Crafted
-            from premium denim, they offer both style and comfort. Perfect for any
-            casual occasion.
+            Fomentar la participación activa de las mujeres en la comunidad y en organizaciones sociales para que puedan influir en las decisiones que afectan sus vidas y las de sus familias.
             </p>
         </div>
         </div>
@@ -84,7 +79,7 @@
 </div>
 
 <section>
-    <div class="bg-[url('/public/images/fondo1.png')] p-10"></div>
+    <div class="bg-[url('/public/images/fondo1.png')] p-11"></div>
 </section>
 @endsection
 

@@ -7,6 +7,22 @@
     <link rel="shortcut icon" href="images/logoblue.png" type="image/x-icon">
     <!--<title>{% block title %} {% endblock %}</title>-->
     <title>Redmi Aq'ab'al</title>
+    <style>
+        .faq-item {
+            cursor: pointer;
+        }
+        .carousel-item {
+            display: none;
+        }
+        .carousel-item.active {
+            display: block;
+        }
+        .carousel img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+    </style>
     @vite('resources/css/app.css')
 </head>
 <body>
@@ -25,8 +41,8 @@
                 <ul class="flex menu text-amber-500   items-center justify-center gap-5">
                     <li><a href="{{url('/')}}"class="link hover:text-white"><img src="icons/start.svg" class=" inline-block mr-2" alt="">INICIO</a></li><br>
                     <li><a href="{{url('eventos')}}" class="link hover:text-white "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">EVENTOS</a></li><br>
-                    <li><a href="{{url('inscribirse')}}" class="link hover:text-white"><img src="icons/fem.svg" class="inline-block mr-2" alt="">PROGRAMA</a></li><br>
-                    <li><a href="{{url('contacto')}}"class="link hover:text-white"><img src="icons/contact.svg" class="inline-block mr-2" alt="">ACERCA DE</a></li><br>
+                    <li><a href="{{url('programas')}}" class="link hover:text-white"><img src="icons/fem.svg" class="inline-block mr-2" alt="">PROGRAMA</a></li><br>
+                    <li><a href="{{url('nosotras')}}"class="link hover:text-white"><img src="icons/contact.svg" class="inline-block mr-2" alt="">NOSOTRAS</a></li><br>
                     <li><a href="{{url('admin/login')}}"class="link hover:text-white"><img src="icons/login.svg" class="inline-block mr-2" alt="">INGRESAR</a></li><br>
                     
                    </ul>
@@ -38,9 +54,9 @@
                 <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-blue-950">
                     <li><a href="{{url('/')}}" class="link text-amber-500 "><img src="icons/start.svg" class="inline-block mr-2" alt="">Inicio</a></li><br>
                     <li><a href="{{url('eventos')}}" class="link text-amber-500 "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">Eventos</a></li><br>
-                    <li><a href="{{url('inscribirse')}}" class="link text-amber-500 "><img src="icons/fem.svg" class="inline-block mr-2" alt="">Programas</a></li><br>
-                    <li><a href="{{url('contacto')}}" class="link text-amber-500 "><img src="icons/contact.svg" class="inline-block mr-2" alt="">Acerca de</a></li><br>
-                    <li><a href="#"class="link text-amber-500 "><img src="icons/login.svg" class="inline-block mr-2" alt="">Ingresar</a></li><br>
+                    <li><a href="{{url('programas')}}" class="link text-amber-500 "><img src="icons/fem.svg" class="inline-block mr-2" alt="">Programas</a></li><br>
+                    <li><a href="{{url('nosotras')}}" class="link text-amber-500 "><img src="icons/contact.svg" class="inline-block mr-2" alt="">Nosotras</a></li><br>
+                    <li><a href="{{url('admin/login')}}"class="link text-amber-500 "><img src="icons/login.svg" class="inline-block mr-2" alt="">Ingresar</a></li><br>
                 </ul>
             </div>
 
@@ -59,8 +75,8 @@
 
                 <li><a href="{{url('/')}}" class="block py-2 hover:text-white"><img src="icons/start.svg" class="inline-block mr-2" alt="">INICIO</a></li>
                 <li><a href="{{url('eventos')}}"class="block py-2 hover:text-white"><img src="icons/calendar.svg" class="inline-block mr-2" alt="">EVENTOS</a></li>
-                <li><a href="{{url('inscribirse')}}" class="block py-2 hover:text-white"><img src="icons/fem.svg" class="inline-block mr-2"  alt="">PROGRAMA</a></li>
-                <li><a href="{{url('contacto')}}"class="block py-2 hover:text-white"><img src="icons/contact.svg" class="inline-block mr-2" alt="">ACERCA DE</a></li>
+                <li><a href="{{url('programas')}}" class="block py-2 hover:text-white"><img src="icons/fem.svg" class="inline-block mr-2"  alt="">PROGRAMA</a></li>
+                <li><a href="{{url('nosotras')}}"class="block py-2 hover:text-white"><img src="icons/contact.svg" class="inline-block mr-2" alt="">NOSOTRAS</a></li>
                 <li><a href="#" class="block py-2 hover:text-white"><img src="icons/login.svg" class="inline-block mr-2" alt="">INGRESAR</a></li>
             </ul>
         </div>
@@ -68,7 +84,7 @@
                 <img src="images/umg.png" width="100" alt="">
             </div>
         <div class="flex-1 mb-4">
-            <p class="text-sm text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="text-sm text-white">Una organización comprometida con brindar mentorías a niñas y jóvenes del departamento de Totonicapán, enfocada en el desarrollo de habilidades esenciales para su crecimiento social y personal.</p>
         </div>
         <div class="flex-1 mb-4 text-right">
             <h4 class="text-lg font-semibold mb-2">Redes Sociales</h4>
