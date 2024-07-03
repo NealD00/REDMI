@@ -30,7 +30,13 @@ Route::get('/eventos', function (){
     return view('eventos');
 }) -> name ('eventos');
 
+Route::get('/programas', function (){
+    return view('programas');
+}) -> name ('programas');
 
+Route::get('/nosotras', function (){
+    return view('nosotras');
+}) -> name ('nosotras');
 
 //livewire sirve para funcions tipo javascript 
 //esta es una opcion de usar rutas sin necesidad de controller
