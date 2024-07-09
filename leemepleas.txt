@@ -1,0 +1,9 @@
+php artisan make:model Espacios_Seguros -m
+php artisan make:filament-resource Espacios_Seguros --generate --view
+
+php artisan migrate:fresh --seed    //actualizar la bd 
+
+  php artisan migrate:fresh
+ php artisan make:filament-user
+
+php artisan storage:link
