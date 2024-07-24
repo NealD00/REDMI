@@ -17,7 +17,7 @@ class AdolescentesResource extends Resource
 {
     protected static ?string $model = Adolescentes::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $navigationGroup = 'Participantes | Inscripciones';
 
@@ -126,7 +126,8 @@ class AdolescentesResource extends Resource
                 Tables\Columns\TextColumn::make('segundo_apellido')
                     ->label('Segundo Apellido'),
                 Tables\Columns\TextColumn::make('fecha_nacimiento')
-                    ->label('Fecha de Nacimiento'),
+                    ->label('Fecha de Nacimiento')
+                    ->date(),
                 Tables\Columns\TextColumn::make('edad')
                     ->label('Edad'),
                 Tables\Columns\TextColumn::make('grado_escolar')

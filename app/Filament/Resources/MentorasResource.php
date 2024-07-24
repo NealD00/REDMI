@@ -79,6 +79,7 @@ class MentorasResource extends Resource
                     ->label('Nombre Completo')
                     ->searchable()
                     ->sortable(),
+               
                 Tables\Columns\TextColumn::make('grupo'),
                 Tables\Columns\TextColumn::make('correo')
                     ->label('Correo'),
@@ -90,10 +91,13 @@ class MentorasResource extends Resource
                     #->nullable()
                     ->default(''),
                 Tables\Columns\TextColumn::make('fechaNacimiento')
-                    ->label('Fecha de Nacimiento'),
+                    ->label('Fecha de Nacimiento')
+                    ->date(),
                 Tables\Columns\TextColumn::make('edad'),
                 Tables\Columns\TextColumn::make('telefono'),
             ])
+
+
             ->filters([
                 //
             ])

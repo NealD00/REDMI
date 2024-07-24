@@ -26,6 +26,8 @@ class EspacioSeguroResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+        ->schema([
+            Forms\Components\Section::make()
             ->schema([
                 Forms\Components\TextInput::make('nombre')
                     ->label('Comunidad')
@@ -43,17 +45,32 @@ class EspacioSeguroResource extends Resource
                     ->required(),
                 Forms\Components\MarkdownEditor::make('descripcion')
                     ->label('Descripcion')
-                    #->columnSpan(2)
+                    ->columnSpan(2)
                     ->required(),
+                    ])->columns(2),
+
+            /*Forms\Components\Section::make()
                 Forms\Components\FileUpload::make('fotografia')
                     ->label('Fotografia')
                     ->directory('espacios-seguros')
                     ->image()
                     /*->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file) {
                         return (string) str($file->getClientOriginalName())->prepend('espacios-seguros/');
-                    })*/
+                    })
                     ->label('Foto Del lugar'),
-            ]);
+            ]);*/
+
+            Forms\Components\Section::make()
+                ->schema([
+                    Forms\Components\FileUpload::make('fotografia')
+                    ->label('Fotografia')
+                    ->directory('espacios-seguros')
+                    ->image()
+                    /*->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file) {
+                        return (string) str($file->getClientOriginalName())->prepend('espacios-seguros/');
+                    })*/
+                ])->collapsible(),
+        ]);
     }
 
     public static function table(Table $table): Table

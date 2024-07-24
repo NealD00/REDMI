@@ -37,7 +37,7 @@
                 <h2 >TOTONICAPAN</h2>
             </div>
             
-            <div class="links lg:block hidden w-1/6 md:w-4/6 ">
+            <div class="links lg:block  font-extrabold hidden w-1/6 md:w-4/6 ">
                 <ul class="flex menu text-amber-500   items-center justify-center gap-5">
                     <li><a href="{{url('/')}}"class="link hover:text-white"><img src="icons/start.svg" class=" inline-block mr-2" alt="">INICIO</a></li><br>
                     <li><a href="{{url('eventos')}}" class="link hover:text-white "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">EVENTOS</a></li><br>
