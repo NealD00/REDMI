@@ -7,3 +7,12 @@ php artisan migrate:fresh --seed    //actualizar la bd
  php artisan make:filament-user
 
 php artisan storage:link
+
+composer require spatie/laravel-permission  // instalacion paquete de roles y permission
+
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+----------------------------------------------
+
+composer require filament/widgets:"^3.0" -W
+dashboard
