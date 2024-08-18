@@ -33,13 +33,13 @@ class AdolescentesResource extends Resource
                         Forms\Components\TextInput::make('primer_nombre')
                             ->label('Primer Nombre')
                             ->required(),
-                        Forms\Components\TextInput::make('segundo_nombre')
-                            ->label('Segundo Nombre'),                          
+                        /*Forms\Components\TextInput::make('segundo_nombre')
+                            ->label('Segundo Nombre'), */                         
                         Forms\Components\TextInput::make('primer_apellido')
                             ->label('Primer Apellido')
                             ->required(),
-                        Forms\Components\TextInput::make('segundo_apellido')
-                            ->label('Segundo Apellido'),
+                        /*Forms\Components\TextInput::make('segundo_apellido')
+                            ->label('Segundo Apellido'),*/
                         Forms\Components\DatePicker::make('fecha_nacimiento')                 
                             ->label('Fecha de Nacimiento')
                             ->after('1900-01-01')

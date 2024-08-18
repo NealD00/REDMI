@@ -39,11 +39,11 @@
             
             <div class="links lg:block  font-extrabold hidden w-1/6 md:w-4/6 ">
                 <ul class="flex menu text-amber-500   items-center justify-center gap-5">
-                    <li><a href="{{url('/')}}"class="link hover:text-white"><img src="icons/start.svg" class=" inline-block mr-2" alt="">INICIO</a></li><br>
-                    <li><a href="{{url('eventos')}}" class="link hover:text-white "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">EVENTOS</a></li><br>
-                    <li><a href="{{url('programas')}}" class="link hover:text-white"><img src="icons/fem.svg" class="inline-block mr-2" alt="">PROGRAMA</a></li><br>
-                    <li><a href="{{url('nosotras')}}"class="link hover:text-white"><img src="icons/contact.svg" class="inline-block mr-2" alt="">NOSOTRAS</a></li><br>
-                    <li><a href="{{url('admin/login')}}"class="link hover:text-white"><img src="icons/login.svg" class="inline-block mr-2" alt="">INGRESAR</a></li><br>
+                    <li><a href="{{url('/')}}"class="link hover:text-white"><!--<img src="icons/start.svg" class=" inline-block mr-2" alt="">-->INICIO</a></li><br>
+                    <li><a href="{{url('eventos')}}" class="link hover:text-white "><!--<img src="icons/calendar.svg" class="inline-block mr-2" alt="">-->EVENTOS</a></li><br>
+                    <li><a href="{{url('programas')}}" class="link hover:text-white"><!--<img src="icons/fem.svg" class="inline-block mr-2" alt="">-->PROGRAMA</a></li><br>
+                    <li><a href="{{url('nosotras')}}"class="link hover:text-white"><!--<img src="icons/contact.svg" class="inline-block mr-2" alt="">-->NOSOTRAS</a></li><br>
+                    <li><a href="{{url('admin/login')}}"class="link hover:text-white"><!--<img src="icons/login.svg" class="inline-block mr-2" alt="">-->INGRESAR</a></li><br>
                     
                    </ul>
             </div>
@@ -51,7 +51,7 @@
             <div class="block lg:hidden w-1/6 lg:w-4/6">
                 <a href="#" class="link" id="mobile-menu"><img src="icons/menu.svg" class="items-center" alt=""></a>
 
-                <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-blue-950">
+                <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-blue-900">
                     <li><a href="{{url('/')}}" class="link text-amber-500 "><img src="icons/start.svg" class="inline-block mr-2" alt="">Inicio</a></li><br>
                     <li><a href="{{url('eventos')}}" class="link text-amber-500 "><img src="icons/calendar.svg" class="inline-block mr-2" alt="">Eventos</a></li><br>
                     <li><a href="{{url('programas')}}" class="link text-amber-500 "><img src="icons/fem.svg" class="inline-block mr-2" alt="">Programas</a></li><br>

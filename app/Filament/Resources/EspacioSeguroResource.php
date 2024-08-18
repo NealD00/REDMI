@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+
 class EspacioSeguroResource extends Resource
 {
     protected static ?string $model = EspacioSeguro::class;
@@ -47,29 +48,18 @@ class EspacioSeguroResource extends Resource
                     ->label('Descripcion')
                     ->columnSpan(2)
                     ->required(),
-                    ])->columns(2),
-
-            /*Forms\Components\Section::make()
-                Forms\Components\FileUpload::make('fotografia')
-                    ->label('Fotografia')
-                    ->directory('espacios-seguros')
-                    ->image()
                     /*->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file) {
                         return (string) str($file->getClientOriginalName())->prepend('espacios-seguros/');
-                    })
-                    ->label('Foto Del lugar'),
-            ]);*/
+                    })*/
+                    ])->columns(2),
 
             Forms\Components\Section::make()
                 ->schema([
                     Forms\Components\FileUpload::make('fotografia')
                     ->label('Fotografia')
                     ->directory('espacios-seguros')
-                    ->image()
-                    /*->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file) {
-                        return (string) str($file->getClientOriginalName())->prepend('espacios-seguros/');
-                    })*/
-                ])->collapsible(),
+                    ->image(),
+                ]),
         ]);
     }
 
@@ -107,6 +97,7 @@ class EspacioSeguroResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                //Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -117,7 +108,7 @@ class EspacioSeguroResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [

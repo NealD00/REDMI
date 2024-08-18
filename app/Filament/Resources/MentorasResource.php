@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\MultiSelect;
 
+
 class MentorasResource extends Resource
 {
     protected static ?string $model = Mentoras::class;
@@ -28,9 +29,28 @@ class MentorasResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nombre')
-                    ->label('Nombre Completo')
-                    ->required(),
+                Forms\Components\Section::make()
+                    ->schema([
+                    Forms\Components\TextInput::make('nombre')
+                        ->label('Nombre Completo')
+                        ->required(),
+                    Forms\Components\DatePicker::make('fechaNacimiento')
+                        ->label('Fecha de Nacimiento')
+                        ->after('1900-01-01')
+                        ->before(now())
+                        ->required(),
+                    Forms\Components\TextInput::make('correo')
+                        ->label('Correo Electronico')
+                        ->email()
+                        ->required(),
+                    Forms\Components\TextInput::make('telefono')
+                        ->label('Telefono')
+                        ->type('tel')
+                        ->required(),
+                ])->columns(2),
+                
+                Forms\Components\Section::make()
+                    ->schema([
                 Forms\Components\Select::make('grupo')
                     ->label('Grupos')
                     ->options([
@@ -38,18 +58,14 @@ class MentorasResource extends Resource
                         'adolencentes' => 'adolencentes',
                         'niñas y adolencentes' => 'niñas y adolencentes',
                     ]),
-                Forms\Components\TextInput::make('correo')
-                    ->label('Correo Electronico')
-                    ->email()
-                    ->required(),
                 Forms\Components\BelongsToSelect::make('espacio_seguros_id')
                     ->label('Espacio Seguro')
                     ->preload()
                     ->relationship('espacioseguro', 'nombre')
                     ->preload()
                     ->required(),
-                    Forms\Components\BelongsToSelect::make('espacio_seguros_id_2')
-                    ->label('Espacio Seguro')
+                Forms\Components\BelongsToSelect::make('espacio_seguros_id_2')
+                    ->label('Espacio Seguro 2')
                     ->preload()
                     ->relationship('espacioseguro2', 'nombre')
                     ->preload()
@@ -58,16 +74,20 @@ class MentorasResource extends Resource
                             ->required(),
                     ])*/
                     ->required(),
-                Forms\Components\DatePicker::make('fechaNacimiento')
-                    ->label('Fecha de Nacimiento')
-                    ->after('1900-01-01')
-                    ->before(now())
-                    ->required(),
-                Forms\Components\TextInput::make('telefono')
-                    ->label('Telefono')
-                    ->type('tel')
-                    ->required(),
-
+                ])->columns(2),
+                
+                    
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\DateTimePicker::make('created_at')
+                            ->label('Fecha de Creacion')
+                            ->disabled(),
+                        Forms\Components\DateTimePicker::make('updated_at')
+                            ->label('Ultima Actualizacion')
+                            ->disabled(),
+                    ])->collapsible()
+                      ->columns(2),
+                
             ]);
     }
 
@@ -102,8 +122,8 @@ class MentorasResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+               /* Tables\Actions\ViewAction::make(),
+                Tables\Actions\EditAction::make(),*/
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

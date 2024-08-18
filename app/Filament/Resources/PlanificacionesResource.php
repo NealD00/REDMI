@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 #use Filament\Forms\Components\SpatieTagsInput;
-//use Filament\Pages\SubNavigationPosition;
+#use Filament\Pages\SubNavigationPosition;
 
 class PlanificacionesResource extends Resource
 {
@@ -23,9 +23,9 @@ class PlanificacionesResource extends Resource
 
     protected static ?string $navigationGroup = 'Planificacion Anual';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
 
-    //protected static subNavigationPosition $subNavigationPosition = subNavigationPosition::Top;
+    #protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     public static function form(Form $form): Form
     {
@@ -45,10 +45,10 @@ class PlanificacionesResource extends Resource
                         'otro' => 'Otro',
                     ])
                     ->required(),
-                Forms\Components\MarkdownEditor::make('descripcion')
-                    ->required()
-                    ->columnSpan(5)
-                    ->columnSpan('full'),
+                Forms\Components\FileUpload::make('imagen')
+                    ->label('Imagen')
+                    ->directory('planificaciones')
+                    ->image(),
                 Forms\Components\Select::make('estado')
                     ->options([
                         'pendiente' => 'Pendiente',
@@ -56,23 +56,24 @@ class PlanificacionesResource extends Resource
                         'cancelado' => 'Cancelado',
                     ])
                     ->required(),
+    
                 Forms\Components\DatePicker::make('fecha')
                     ->required(),
                 /*Forms\Components\TextInput::make('imagen')
                     ->required()
                     ->maxLength(255),*/
+                
                 Forms\Components\BelongsToSelect::make('mentoras_id')    
                     ->label('Mentora')
                     ->relationship('mentoras', 'nombre'),
                 #SpatieTagsInput::make('tags'),
-            ])->columns(2),
+            ])->columns(3),
              
             Forms\Components\Section::make()
                 ->schema([
-                    Forms\Components\FileUpload::make('imagen')
-                        ->label('Imagen')
-                        ->directory('planificaciones')
-                        ->image(),
+                    Forms\Components\MarkdownEditor::make('descripcion')
+                        ->required()
+                        ->columnSpan(2),
                 ])->collapsible(),
             ]);
     }
@@ -96,9 +97,9 @@ class PlanificacionesResource extends Resource
                         'warining' => 'otro',
                     ])
                     ->searchable(),
-                Tables\Columns\TextColumn::make('descripcion')
+                /*Tables\Columns\TextColumn::make('descripcion')
                     ->label('Descripcion')
-                    ->searchable(),
+                    ->searchable(),*/
                 Tables\Columns\TextColumn::make('estado')
                     ->label('Estado')
                     ->badge()
@@ -156,6 +157,14 @@ class PlanificacionesResource extends Resource
         ];
     }
     
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationsitems([
+            Pages\ViewPlanificaciones::class,
+            Pages\EditPlanificaciones::class,
+        ]);
+    }
+
     public static function getPages(): array
     {
         return [
