@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('mentoras', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('primer_nombre');
+            $table->string('segundo_nombre')->nullable();
+            $table->string('tercer_nombre')->nullable();
+            $table->string('primer_apellido');
+            $table->string('segundo_apellido')->nullable();
             $table->string('correo')->unique();
             $table->foreignId('espacio_seguros_id')->constrained('espacio_seguros')->cascadeOnDelete();
             $table->foreignId('espacio_seguros_id_2')->nullable()->constrained('espacio_seguros');
@@ -21,6 +25,7 @@ return new class extends Migration
             $table->date('fechaNacimiento');
             $table->integer('edad')->nullable();
             $table->string('telefono');
+            $table->string('nombre_completo')->nullable();
             $table->timestamps();
         });
     }

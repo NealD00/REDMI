@@ -38,11 +38,20 @@ class AsistenciaNiniasResource extends Resource
                 Forms\Components\DatePicker::make('fecha')
                     ->required(),
                 Forms\Components\BelongsToSelect::make('espacio_seguros_id')
-                    ->relationship('espacioseguro', 'id', 'nombre')
+                    ->label('Espacio Seguro')
+                    ->preload()
+                    ->relationship('espacioseguro', 'nombre')
                     ->required(),
                 Forms\Components\BelongsToSelect::make('ninias_id')
-                    ->relationship('ninia', 'id', 'nombre')
+                    ->label('Niña')
+                    ->relationship('ninias', 'nombre_completo')
+                    ->preload()
                     ->required(),
+                /*Forms\Components\BelongsToSelect::make('ninias_id')
+                    ->label('Apellido')
+                    ->relationship('ninias', 'primer_apellido')
+                    ->preload()
+                    ->required(),*/
             ]),
             ]);
     }
@@ -51,7 +60,15 @@ class AsistenciaNiniasResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('actividad')
+                    ->label('Actividad'),
+                Tables\Columns\TextColumn::make('fecha'),
+                Tables\Columns\TextColumn::make('espacioseguro.nombre')
+                    ->label('Espacio Seguro')
+                    ->alignleft(),
+                Tables\Columns\TextColumn::make('ninias.nombre_completo')
+                    ->label('Niña')
+                    ->alignleft(),
             ])
             ->filters([
                 //

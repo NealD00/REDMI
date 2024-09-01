@@ -25,6 +25,7 @@ class Adolescentes extends Model
     protected $fillable = [
         'primer_nombre',
         'segundo_nombre',
+        'tercer_nombre',
         'primer_apellido',
         'segundo_apellido',
         'fecha_nacimiento',
@@ -43,7 +44,11 @@ class Adolescentes extends Model
         parent::boot();
 
         static::saving(function ($model) {
+            //calculo de la edad a partir de la fecha de nacimiento
             $model->edad = Carbon::parse($model->fecha_nacimiento)->age;
+
+            //concatenacion de nombre y apellido para obtener nombre completo
+            $model->nombre_completo = $model->primer_nombre . ' ' . $model->primer_apellido;
         });
     } 
 }

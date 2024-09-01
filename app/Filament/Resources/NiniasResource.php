@@ -33,12 +33,15 @@ class NiniasResource extends Resource
                     ->description ('Ingresar los datos de la participante del programa.')
                     ->schema([
                         Forms\Components\TextInput::make('primer_nombre')
-                            ->label('Primer Nombre')
+                            ->label('Nombre')
                             ->required(),
                         Forms\Components\TextInput::make('segundo_nombre')
-                            ->label('Segundo Nombre'),                          
+                            ->label('Segundo Nombre'),
+                        Forms\Components\TextInput::make('tercer_nombre')
+                            ->label('Tercer Nombre')
+                            ->nullable(),                          
                         Forms\Components\TextInput::make('primer_apellido')
-                            ->label('Primer Apellido')
+                            ->label('Apellido')
                             ->required(),
                         Forms\Components\TextInput::make('segundo_apellido')
                             ->label('Segundo Apellido'),
@@ -89,7 +92,7 @@ class NiniasResource extends Resource
                     ->schema([
                         Forms\Components\BelongsToSelect::make('mentoras_id')    
                             ->label('Mentora')
-                            ->relationship('mentoras', 'nombre'),
+                            ->relationship('mentoras', 'nombre_completo'),
 
                         /*Forms\Components\Select::make('rango')           
                             ->label('Rango')
@@ -106,8 +109,20 @@ class NiniasResource extends Resource
                             ->required(),
                         Forms\Components\DatePicker::make('fecha_inscripcion')  
                             ->label('Fecha de Inscripcion')
-                            ->required(),
+                            ->required()
+                            ->default(now()),
                 ])->columns(2),
+
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\DateTimePicker::make('created_at')
+                            ->label('Fecha de Creacion')
+                            ->disabled(),
+                        Forms\Components\DateTimePicker::make('updated_at')
+                            ->label('Ultima Actualizacion')
+                            ->disabled(),
+                    ])->collapsible()
+                      ->columns(2),
             ]);
     }
 
@@ -115,18 +130,18 @@ class NiniasResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('primer_nombre')
-                    ->label('Primer Nombre')
+                Tables\Columns\TextColumn::make('nombre_completo')
+                    ->label('Nombre')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('segundo_nombre')
+                /*Tables\Columns\TextColumn::make('segundo_nombre')
                     ->label('Segundo Nombre')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('primer_apellido')
-                    ->label('Primer Apellido')
+                    ->label('Apellido')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('segundo_apellido')
-                    ->label('Segundo Apellido'),
+                    ->label('Segundo Apellido'),*/
                 Tables\Columns\TextColumn::make('fecha_nacimiento')
                     ->label('Fecha de Nacimiento')
                     ->date(),
@@ -144,7 +159,7 @@ class NiniasResource extends Resource
                     ->label('Fecha de Inscripcion'),
                 /*Tables\Columns\TextColumn::make('rango')
                     ->label('Rango'),*/
-                Tables\Columns\TextColumn::make('mentoras.nombre')
+                Tables\Columns\TextColumn::make('mentoras.nombre_completo')
                     ->label('Mentora'),
                 Tables\Columns\TextColumn::make('espacioseguro.nombre')
                     ->label('Espacio Seguro')

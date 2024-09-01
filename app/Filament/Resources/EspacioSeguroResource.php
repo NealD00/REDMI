@@ -12,7 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components;
 
 class EspacioSeguroResource extends Resource
 {
@@ -44,6 +45,7 @@ class EspacioSeguroResource extends Resource
                     ->label('Tipo de Lugar')
                     ->default('escuela')
                     ->required(),
+                
                 Forms\Components\MarkdownEditor::make('descripcion')
                     ->label('Descripcion')
                     ->columnSpan(2)
@@ -51,22 +53,43 @@ class EspacioSeguroResource extends Resource
                     /*->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file) {
                         return (string) str($file->getClientOriginalName())->prepend('espacios-seguros/');
                     })*/
+                
+                
                     ])->columns(2),
 
-            Forms\Components\Section::make()
+           Forms\Components\Section::make()
                 ->schema([
                     Forms\Components\FileUpload::make('fotografia')
                     ->label('Fotografia')
                     ->directory('espacios-seguros')
                     ->image(),
-                ]),
-        ]);
+                ])->collapsible(),
+
+                Forms\Components\Section::make()
+                ->schema([
+                    Forms\Components\DateTimePicker::make('created_at')
+                        ->label('Fecha de Creacion')
+                        ->disabled(),
+                    Forms\Components\DateTimePicker::make('updated_at')
+                        ->label('Ultima Actualizacion')
+                        ->disabled(),
+                ])->collapsible()
+                  ->columns(2),
+        ])->columns(3);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('fotografia')
+                    ->label('Fotografia')
+                    ->disk('public')
+                    #->directory('espacios-seguros')
+                    #->path('espacios-seguros')
+                    ->height('50px')
+                    ->width('50px')
+                    ->url(fn ($record) => asset("storage/{$record->fotografia}")),
                 Tables\Columns\TextColumn::make('nombre')
                     ->label('Comunidad'),
                     /*->primary()
@@ -80,16 +103,7 @@ class EspacioSeguroResource extends Resource
                     ->label('Descripcion'),
                     /*->searchable()
                     ->sortable(),*/
-                Tables\Columns\ImageColumn::make('fotografia')
-                    ->label('Fotografia')
-                    ->disk('public')
-                    #->directory('espacios-seguros')
-                    #->path('espacios-seguros')
-                    ->height('50px')
-                    ->width('50px')
-                    ->url(fn ($record) => asset("storage/{$record->fotografia}")),
-                    /*->searchable()
-                    ->sortable(),*/
+                
             ])
             ->filters([
                 //
@@ -106,6 +120,43 @@ class EspacioSeguroResource extends Resource
             ])
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
+            ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Components\Section::make()->schema([
+                    Components\Split::make([
+                        Components\Grid::make(2)
+                        ->schema([
+                            Components\Group::make([
+                                Components\TextEntry::make('nombre'),
+                                Components\TextEntry::make('descripcion'),
+                            ]),
+                            Components\Group::make([
+                                Components\TextEntry::make('tipo')
+                                ->badge()
+                                ->color('success'),
+                            ])
+                        ]),
+                        Components\ImageEntry::make('fotografia')
+                            ->hiddenLabel()
+                            ->grow(false),
+                        
+                    ])->from('lg'),
+                ]),
+                Components\Section::make('created_at')
+                    ->label('Fechas')
+                    ->columns(2)
+                    ->schema([
+                        Components\TextEntry::make('created_at')
+                            ->label('Fecha de Creacion'),
+                        Components\TextEntry::make('updated_at')
+                            ->label('Ultima Actualizacion'),
+                    ])
+                    ->collapsible(),
             ]);
     }
 

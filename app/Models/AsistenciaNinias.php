@@ -23,4 +23,12 @@ class AsistenciaNinias extends Model
         return $this->belongsTo(EspacioSeguro::class,'espacio_seguros_id');
     }
 
+    public function ninias(): BelongsTo
+    {
+        return $this->belongsTo(Ninias::class,'ninias_id');
+    }
+
+    /*public function getNombreCompletoAttribute() {
+        return "{$this->primer_nombre} {$this->primer_apellido}";
+    }*/
 }

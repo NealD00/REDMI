@@ -25,6 +25,7 @@ class Ninias extends Model
     protected $fillable = [
         'primer_nombre',
         'segundo_nombre',
+        'tercer_nombre',
         'primer_apellido',
         'segundo_apellido',
         'fecha_nacimiento',
@@ -36,6 +37,7 @@ class Ninias extends Model
         'fecha_inscripcion',
         'mentoras_id',
         'espacio_seguros_id',
+        'nombre_completo'
     ];
 
     protected static function boot()
@@ -43,7 +45,14 @@ class Ninias extends Model
         parent::boot();
 
         static::saving(function ($model) {
+            //calculo de la edad a partir de la fecha de nacimiento
             $model->edad = Carbon::parse($model->fecha_nacimiento)->age;
+
+            //concatenacion de nombre y apellido para obtener nombre completo
+            $model->nombre_completo = $model->primer_nombre . ' ' . $model->primer_apellido;
         });
+
     } 
+
+
 }
