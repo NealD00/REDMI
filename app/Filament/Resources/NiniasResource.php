@@ -34,17 +34,22 @@ class NiniasResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('primer_nombre')
                             ->label('Nombre')
+                            ->maxLength(15)
                             ->required(),
                         Forms\Components\TextInput::make('segundo_nombre')
-                            ->label('Segundo Nombre'),
+                            ->label('Segundo Nombre')
+                            ->maxLength(15),
                         Forms\Components\TextInput::make('tercer_nombre')
                             ->label('Tercer Nombre')
+                            ->maxLength(15)
                             ->nullable(),                          
                         Forms\Components\TextInput::make('primer_apellido')
                             ->label('Apellido')
+                            ->maxLength(15)
                             ->required(),
                         Forms\Components\TextInput::make('segundo_apellido')
-                            ->label('Segundo Apellido'),
+                            ->label('Segundo Apellido')
+                            ->maxLength(15),
                         Forms\Components\DatePicker::make('fecha_nacimiento')                 
                             ->label('Fecha de Nacimiento')
                             ->after('1900-01-01')
@@ -83,7 +88,8 @@ class NiniasResource extends Resource
                             ->required(),
                         Forms\Components\TextInput::make('telefono_encargado')
                             ->label('Telefono del Encargado')
-                            ->type('tel')
+                            ->maxLength(8)
+                            ->tel()
                             ->required(),
                 ])->columns(2),
                 
@@ -110,7 +116,7 @@ class NiniasResource extends Resource
                         Forms\Components\DatePicker::make('fecha_inscripcion')  
                             ->label('Fecha de Inscripcion')
                             ->required()
-                            ->default(now()),
+                            ->default(today()),
                 ])->columns(2),
 
                 Forms\Components\Section::make()

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Notifications\Notification;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
@@ -16,6 +18,7 @@ class Adolescentes extends Model
     {
         return $this->belongsTo(Mentoras::class,'mentoras_id');
     }
+
 
     public function espacioseguro(): BelongsTo
     {
@@ -51,4 +54,26 @@ class Adolescentes extends Model
             $model->nombre_completo = $model->primer_nombre . ' ' . $model->primer_apellido;
         });
     } 
+
+    protected static function booted()
+    {
+        static::saving(function ($adolescente) {
+            $fechaNacimiento = Carbon::parse($adolescente->fecha_nacimiento);
+            $edad = $fechaNacimiento->age;
+
+            if ($edad < 12 || $edad > 20) {
+                // Mostrar una notificación en pantalla
+                Notification::make()
+                    ->title('Edad inválida')
+                    ->body('La edad debe estar entre 12 y 20 años.')
+                    ->danger()  // Estilo de notificación de error
+                    ->send();
+
+                // Lanzar una excepción de validación para el campo de edad
+                throw ValidationException::withMessages([
+                    'fecha_nacimiento' => 'La edad debe estar entre 12 y 20 años.',
+                ]);
+            }
+        });
+    }
 }

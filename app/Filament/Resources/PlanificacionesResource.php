@@ -39,7 +39,7 @@ class PlanificacionesResource extends Resource
                 Forms\Components\TextInput::make('titulo')
                     ->required()
                     ->live(onBlur: true)
-                    ->maxLength(255),
+                    ->maxLength(60),
                 Forms\Components\Select::make('etiqueta')
                     ->label('Actividad')
                     ->options([
@@ -65,10 +65,9 @@ class PlanificacionesResource extends Resource
                 /*Forms\Components\TextInput::make('imagen')
                     ->required()
                     ->maxLength(255),*/
-                
                 Forms\Components\BelongsToSelect::make('mentoras_id')    
                     ->label('Mentora')
-                    ->relationship('mentoras', 'nombre'),
+                    ->relationship('mentoras', 'nombre_completo'),
                 #SpatieTagsInput::make('tags'),
             ])->columns(3),
 
@@ -84,6 +83,7 @@ class PlanificacionesResource extends Resource
                 ->schema([
                     Forms\Components\MarkdownEditor::make('descripcion')
                         ->required()
+                        ->maxLength(200)
                         ->columnSpan(2),
                 ])->collapsible(),
             ]);
@@ -124,7 +124,7 @@ class PlanificacionesResource extends Resource
                     ])
                     ->searchable(),
                 
-                Tables\Columns\TextColumn::make('mentoras.nombre')
+                Tables\Columns\TextColumn::make('mentoras.nombre_completo')
                     ->label('Mentora'),
                 Tables\Columns\ImageColumn::make('imagen')
                     ->label('Imagen')
@@ -181,7 +181,7 @@ class PlanificacionesResource extends Resource
                                 Components\TextEntry::make('estado')
                                     ->badge()
                                     ->color('success'),
-                                Components\TextEntry::make('mentoras.nombre')
+                                Components\TextEntry::make('mentoras.nombre_completo')
                                     ->label('Mentora'),
                             ])
                         ]),

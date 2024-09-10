@@ -15,7 +15,6 @@ class AsistenciaNinias extends Model
         'actividad',
         'fecha',
         'espacio_seguros_id',
-        'ninias_id',
     ];
 
     public function espacioseguro(): BelongsTo
@@ -26,6 +25,11 @@ class AsistenciaNinias extends Model
     public function ninias(): BelongsTo
     {
         return $this->belongsTo(Ninias::class,'ninias_id');
+    }
+
+    public function nintermedios(): HasMany
+    {
+        return $this->hasMany(nintermedios::class,'asistencia_ninias_id','id');
     }
 
     /*public function getNombreCompletoAttribute() {
