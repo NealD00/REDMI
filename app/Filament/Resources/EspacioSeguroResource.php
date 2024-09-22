@@ -33,6 +33,7 @@ class EspacioSeguroResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('nombre')
                     ->label('Comunidad')
+                    ->maxLength(40)
                     ->required(),
                 Forms\Components\Select::make('tipo')
                     ->options([
@@ -48,6 +49,7 @@ class EspacioSeguroResource extends Resource
                 
                 Forms\Components\MarkdownEditor::make('descripcion')
                     ->label('Descripcion')
+                    ->maxLength(200)
                     ->columnSpan(2)
                     ->required(),
                     /*->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file) {

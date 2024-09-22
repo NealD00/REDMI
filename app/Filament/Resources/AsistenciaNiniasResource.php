@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AsistenciaNiniasResource\Pages;
 use App\Filament\Resources\AsistenciaNiniasResource\RelationManagers;
 use App\Models\AsistenciaNinias;
+use App\Models\nintermedios;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Componnents\Tooggle;
 
 class AsistenciaNiniasResource extends Resource
 {
@@ -42,16 +44,28 @@ class AsistenciaNiniasResource extends Resource
                     ->preload()
                     ->relationship('espacioseguro', 'nombre')
                     ->required(),
-                Forms\Components\BelongsToSelect::make('ninias_id')
-                    ->label('Niña')
-                    ->relationship('ninias', 'nombre_completo')
-                    ->preload()
-                    ->required(),
-                /*Forms\Components\BelongsToSelect::make('ninias_id')
-                    ->label('Apellido')
-                    ->relationship('ninias', 'primer_apellido')
-                    ->preload()
-                    ->required(),*/
+                
+                Forms\Components\Repeater::make('nintermedios')
+                    ->label('Lista de Niñas')
+                    ->Relationship('nintermedios')
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\BelongsToSelect::make('ninias_id')
+                            ->label('Nombre Completo')
+                            ->relationship('ninias', 'nombre_completo')
+                            ->preload()
+                            ->ColumnSpan(1)
+                            ->required(),
+                        Forms\Components\Toggle::make('asistio')
+                            ->label('Asistió')
+                            ->inline(false)
+                            ->required(),
+                    ])
+                    ->createItemButtonLabel('Agregar Niña')
+                    ->minItems(1)
+                    ->required()
+                    ->columnSpan(2),
+                
             ]),
             ]);
     }
@@ -66,9 +80,9 @@ class AsistenciaNiniasResource extends Resource
                 Tables\Columns\TextColumn::make('espacioseguro.nombre')
                     ->label('Espacio Seguro')
                     ->alignleft(),
-                Tables\Columns\TextColumn::make('ninias.nombre_completo')
+                /*Tables\Columns\TextColumn::make('ninias.nombre_completo')
                     ->label('Niña')
-                    ->alignleft(),
+                    ->alignleft(),*/
             ])
             ->filters([
                 //
