@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nintermedios', function (Blueprint $table) {
+        Schema::create('asistencias_adolescentes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('asistencia_ninias_id')->constrained('asistencia_ninias')->cascadeOnDelete();
-            $table->foreignId('ninias_id')->constrained('ninias')->cascadeOnDelete();
-            $table->boolean('asistio')->cascadeOnDelete();
+            $table->string('actividad');
+            $table->date('fecha');
+            $table->foreignId('espacio_seguros_id')->constrained('espacio_seguros');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nintermedios');
+        Schema::dropIfExists('asistencias_adolescentes');
     }
 };

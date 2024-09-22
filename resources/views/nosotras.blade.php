@@ -114,10 +114,10 @@
         </div>
 </section>
 
-<div class="bg-amber-500 p-8">
-    <h3 class="text-blue-900 text-center font-black xsm:text-3xl sm:text-4xl">Contactanos</h3>
+<div class="bg-blue-100 p-8">
+    <h3 class="text-blue-900 text-center font-black xsm:text-3xl sm:text-4xl">Sobre Nosotras</h3>
 </div>
-<div class="flex items-center gap-12 bg-amber-500 mx-auto justify-center">
+<div class="flex items-center gap-12 bg-blue-100 mx-auto justify-center">
   <div class="social-button">
     <button class="relative w-20 h-20 rounded-full group">
       <div
@@ -126,7 +126,7 @@
       <div
         class="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-green-600 rounded-full"
       >
-      <a href="https://www.google.com">
+      <a href="https://api.whatsapp.com/send?phone=">
         <img src="icons/ws.svg" class="group-hover:fill-[#171543] fill-white duration-300">
       </a> 
       </div>
@@ -157,14 +157,14 @@
       <div
         class="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-red-400 rounded-full"
       >
-      <a href="https://www.google.com">
+      <a href="https://youtu.be/A8ApjKG2sO4?si=RLuNr4PgoFir1UFT">
         <img src="icons/yutu.svg" class="group-hover:fill-[#171543] fill-white duration-300">
       </a> 
       </div>
     </button>
   </div>
 
-  <div class="social-button">
+  <!--<div class="social-button">
     <button class="relative w-20 h-20 rounded-full group">
       <div
         class="floater w-full h-full absolute top-0 left-0 bg-slate-900 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"
@@ -172,16 +172,16 @@
       <div
         class="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-slate-900 rounded-full"
       >
-      <a href="https://www.google.com">
+      <a href="mailto:soporte@gmail.com?subject=Consulta&body=Hola, necesito más información sobre...">
         <img src="icons/email.svg" class="group-hover:fill-[#171543] fill-white duration-300">
       </a> 
       </div>
     </button>
-  </div>
+  </div>-->
 </div>
 
 
-<div class="bg-amber-500 p-8"></div>
+<div class="bg-blue-100 p-8"></div>
 
 
     <script>

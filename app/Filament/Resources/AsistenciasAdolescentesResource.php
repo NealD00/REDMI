@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AsistenciaNiniasResource\Pages;
-use App\Filament\Resources\AsistenciaNiniasResource\RelationManagers;
-use App\Models\AsistenciaNinias;
-use App\Models\nintermedios;
+use App\Filament\Resources\AsistenciasAdolescentesResource\Pages;
+use App\Filament\Resources\AsistenciasAdolescentesResource\RelationManagers;
+use App\Models\AsistenciasAdolescentes;
+use App\Models\aintermedios;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,13 +15,14 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Componnents\Tooggle;
 
-class AsistenciaNiniasResource extends Resource
+
+class AsistenciasAdolescentesResource extends Resource
 {
-    protected static ?string $model = AsistenciaNinias::class;
+    protected static ?string $model = AsistenciasAdolescentes::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-table-cells';
-
-    protected static ?string $modelLabel = 'Asistencia Niñas';
+    
+    protected static ?string $modelLabel = 'Asistencia Adolescentes';
 
     protected static ?string $navigationGroup = 'Asistencias';
 
@@ -47,25 +48,15 @@ class AsistenciaNiniasResource extends Resource
                         ->required(),
                 ])->columns(2),
                 
-                Forms\Components\Repeater::make('nintermedios')
-                    ->label('Lista de Niñas')
-                    ->Relationship('nintermedios')
+                Forms\Components\Repeater::make('aintermedios')
+                    ->label('Lista de Adolescentes')
+                    ->Relationship('aintermedios')
                     ->columns(2)
                     ->schema([
-                        Forms\Components\BelongsToSelect::make('ninias_id')
+                        Forms\Components\BelongsToSelect::make('adolescentes_id')
                             ->label('Nombre Completo')
-                            ->relationship('ninias', 'nombre_completo')
+                            ->relationship('adolescentes', 'nombre_completo')
                             ->preload()
-                            /*->dependsOn(['espacio_seguros']) // Dependencia del espacio seguro seleccionado
-                            ->getSearchResultsUsing(function ($search, $query, $data) {
-                                // Aquí, $data contiene los valores de los campos de los que depende este campo, incluido 'espacio_seguros_id'
-                                return Ninia::where('espacio_seguro_id', $data['espacio_seguros_id'])
-                                            ->when($search, function ($query, $search) {
-                                                return $query->where('nombre_completo', 'like', '%' . $search . '%');
-                                            })
-                                            ->get()
-                                            ->pluck('nombre_completo', 'id');
-                                })*/
                             ->ColumnSpan(1)
                             ->required(),
                         Forms\Components\Toggle::make('asistio')
@@ -73,7 +64,7 @@ class AsistenciaNiniasResource extends Resource
                             ->inline(false)
                             ->required(),
                     ])
-                    ->createItemButtonLabel('Agregar Niña')
+                    ->createItemButtonLabel('Agregar Adolescente')
                     ->minItems(1)
                     ->required()
                     ->columnSpan(2),
@@ -91,9 +82,6 @@ class AsistenciaNiniasResource extends Resource
                 Tables\Columns\TextColumn::make('espacioseguro.nombre')
                     ->label('Espacio Seguro')
                     ->alignleft(),
-                /*Tables\Columns\TextColumn::make('ninias.nombre_completo')
-                    ->label('Niña')
-                    ->alignleft(),*/
             ])
             ->filters([
                 //
@@ -122,10 +110,10 @@ class AsistenciaNiniasResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAsistenciaNinias::route('/'),
-            'create' => Pages\CreateAsistenciaNinias::route('/create'),
-            'view' => Pages\ViewAsistenciaNinias::route('/{record}'),
-            'edit' => Pages\EditAsistenciaNinias::route('/{record}/edit'),
+            'index' => Pages\ListAsistenciasAdolescentes::route('/'),
+            'create' => Pages\CreateAsistenciasAdolescentes::route('/create'),
+            'view' => Pages\ViewAsistenciasAdolescentes::route('/{record}'),
+            'edit' => Pages\EditAsistenciasAdolescentes::route('/{record}/edit'),
         ];
     }    
 }

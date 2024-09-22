@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('telefono_encargado');
             $table->string('fecha_inscripcion');
             #$table->string('rango');
-            $table->foreignId('mentoras_id')->constrained('mentoras')->cascadeOnDelete();
-            $table->foreignId('espacio_seguros_id')->constrained('espacio_seguros')->cascadeOnDelete();
+            $table->foreignId('mentoras_id')->constrained('mentoras');
+            $table->foreignId('espacio_seguros_id')->constrained('espacio_seguros');
             $table->string('nombre_completo')->nullable();
             $table->timestamps();
         });

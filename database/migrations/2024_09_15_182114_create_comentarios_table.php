@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nintermedios', function (Blueprint $table) {
+        Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('asistencia_ninias_id')->constrained('asistencia_ninias')->cascadeOnDelete();
-            $table->foreignId('ninias_id')->constrained('ninias')->cascadeOnDelete();
-            $table->boolean('asistio')->cascadeOnDelete();
+            $table->foreignId('mentoras_id')->constrained('mentoras');
+            $table->foreignId('planificaciones_id')->constrained('planificaciones');
+            $table->string('comentario');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nintermedios');
+        Schema::dropIfExists('comentarios');
     }
 };

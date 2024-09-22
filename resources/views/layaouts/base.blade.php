@@ -89,9 +89,9 @@
         <div class="flex-1 mb-4 text-right">
             <h4 class="text-lg font-semibold mb-2">Redes Sociales</h4>
             <ul>
-                <li class="inline-block mx-2"><a href="#" class="text-gray-300 hover:text-white"><img src="icons/fb.svg" alt=""></a></li>
-                <li class="inline-block mx-2"><a href="#" class="text-gray-300 hover:text-white"><img src="icons/wsp.svg" alt=""></a></li>
-                <li class="inline-block mx-2"><a href="#" class="text-gray-300 hover:text-white"><img src="icons/tw.svg" alt=""></a></li>
+                <li class="inline-block mx-2"><a href="https://www.facebook.com/REDMIaqabal2008%20" class="text-gray-300 hover:text-white"><img src="icons/fb.svg" alt=""></a></li>
+                <li class="inline-block mx-2"><a href="https://api.whatsapp.com/send?phone=" class="text-gray-300 hover:text-white"><img src="icons/wsp.svg" alt=""></a></li>
+                <li class="inline-block mx-2"><a href="https://youtu.be/A8ApjKG2sO4?si=RLuNr4PgoFir1UFT" class="text-gray-300 hover:text-white"><img src="icons/yt.svg" alt=""></a></li>
                 <!--<li class="inline-block mx-2"><a href="#" class="text-gray-300 hover:text-white"><img src="icons/yt.svg" alt=""></a></li>-->            
             </ul>
         </div>
