@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('nintermedios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('asistencia_ninias_id')->constrained('asistencia_ninias')->cascadeOnDelete();
-            $table->foreignId('ninias_id')->constrained('ninias')->cascadeOnDelete();
-            $table->boolean('asistio')->cascadeOnDelete();
+            $table->foreignId('asistencia_ninias_id')->constrained('asistencia_ninias');
+            $table->foreignId('ninias_id')->constrained('ninias');
+            $table->boolean('asistio');
             $table->timestamps();
         });
     }

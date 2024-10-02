@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('actividad');
             $table->date('fecha');
-            $table->foreignId('espacio_seguros_id')->constrained('espacio_seguros');
+            $table->foreignId('espacio_seguros_id')->constrained('espacio_seguros')->cascadeOnDelete();
             $table->timestamps();
         });
     }

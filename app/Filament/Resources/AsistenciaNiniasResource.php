@@ -34,18 +34,17 @@ class AsistenciaNiniasResource extends Resource
                 Forms\Components\Section::make()
                 ->description('Ingresar los datos de la asistencia de las niñas.')
                 ->schema([
-                    Forms\Components\TextInput::make('actividad')
-                        ->required()
-                        ->live(onBlur: true)
-                        ->maxLength(255),
-                    Forms\Components\DatePicker::make('fecha')
-                        ->required(),
-                    Forms\Components\BelongsToSelect::make('espacio_seguros_id')
-                        ->label('Espacio Seguro')
-                        ->preload()
-                        ->relationship('espacioseguro', 'nombre')
-                        ->required(),
-                ])->columns(2),
+                Forms\Components\TextInput::make('actividad')
+                    ->required()
+                    ->live(onBlur: true)
+                    ->maxLength(255),
+                Forms\Components\DatePicker::make('fecha')
+                    ->required(),
+                Forms\Components\BelongsToSelect::make('espacio_seguros_id')
+                    ->label('Espacio Seguro')
+                    ->preload()
+                    ->relationship('espacioseguro', 'nombre')
+                    ->required(),
                 
                 Forms\Components\Repeater::make('nintermedios')
                     ->label('Lista de Niñas')
@@ -56,16 +55,6 @@ class AsistenciaNiniasResource extends Resource
                             ->label('Nombre Completo')
                             ->relationship('ninias', 'nombre_completo')
                             ->preload()
-                            /*->dependsOn(['espacio_seguros']) // Dependencia del espacio seguro seleccionado
-                            ->getSearchResultsUsing(function ($search, $query, $data) {
-                                // Aquí, $data contiene los valores de los campos de los que depende este campo, incluido 'espacio_seguros_id'
-                                return Ninia::where('espacio_seguro_id', $data['espacio_seguros_id'])
-                                            ->when($search, function ($query, $search) {
-                                                return $query->where('nombre_completo', 'like', '%' . $search . '%');
-                                            })
-                                            ->get()
-                                            ->pluck('nombre_completo', 'id');
-                                })*/
                             ->ColumnSpan(1)
                             ->required(),
                         Forms\Components\Toggle::make('asistio')
@@ -78,6 +67,7 @@ class AsistenciaNiniasResource extends Resource
                     ->required()
                     ->columnSpan(2),
                 
+            ]),
             ]);
     }
 
