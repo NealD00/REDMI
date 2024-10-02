@@ -17,5 +17,11 @@ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvid
 composer require filament/widgets:"^3.0" -W
 dashboard
 
+php artisan make:filament-widget PaticipantesNiniasComunidad --table
+php artisan make:filament-widget PaticipantesAdolescentesComunidad --table
+
+
 *** verifiacr el BATCH/STATUS de la base de datos.
 php artisan migrate:status
+
+

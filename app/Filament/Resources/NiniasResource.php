@@ -154,7 +154,8 @@ class NiniasResource extends Resource
                 Tables\Columns\TextColumn::make('edad')
                     ->label('Edad'),
                 Tables\Columns\TextColumn::make('grado_escolar')
-                    ->label('Grado Escolar'),
+                    ->label('Grado Escolar')
+                    ->sortable(),
                 /*Tables\Columns\TextColumn::make('telefono')
                     ->label('Telefono'),*/
                 Tables\Columns\TextColumn::make('nombre_encargado')
@@ -162,7 +163,8 @@ class NiniasResource extends Resource
                 Tables\Columns\TextColumn::make('telefono_encargado')
                     ->label('Telefono del Encargado'),
                 Tables\Columns\TextColumn::make('fecha_inscripcion')
-                    ->label('Fecha de Inscripcion'),
+                    ->label('Fecha de Inscripcion')
+                    ->sortable(),
                 /*Tables\Columns\TextColumn::make('rango')
                     ->label('Rango'),*/
                 Tables\Columns\TextColumn::make('mentoras.nombre_completo')

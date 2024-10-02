@@ -11,6 +11,8 @@ use App\Models\Mentoras;
 
 class EspaciosSeguros extends BaseWidget
 {
+    protected static ?int $sort=1;
+
     protected function getStats(): array
     {
         return [

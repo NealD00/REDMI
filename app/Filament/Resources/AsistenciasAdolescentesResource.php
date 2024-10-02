@@ -43,6 +43,7 @@ class AsistenciasAdolescentesResource extends Resource
                         ->required(),
                     Forms\Components\BelongsToSelect::make('espacio_seguros_id')
                         ->label('Espacio Seguro')
+                        ->reactive()
                         ->preload()
                         ->relationship('espacioseguro', 'nombre')
                         ->required(),
@@ -55,6 +56,8 @@ class AsistenciasAdolescentesResource extends Resource
                     ->schema([
                         Forms\Components\BelongsToSelect::make('adolescentes_id')
                             ->label('Nombre Completo')
+                            ->options(Checkbook::where('adolescentes', 1)
+                            ->pluck('name', 'id')->toArray())
                             ->relationship('adolescentes', 'nombre_completo')
                             ->preload()
                             ->ColumnSpan(1)
