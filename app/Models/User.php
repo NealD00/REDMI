@@ -12,11 +12,15 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role; //
 use Spatie\Permission\Models\Permission; //
 
-class User extends Authenticatable
+
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use Filament\Models\Contracts\FilamentUser;
+
+class User extends Authenticatable implements FilamentUser
 {
     use HasRoles;
 
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasPanelShield;
 
 
 

@@ -1,0 +1,149 @@
+[33mcommit 0d824d9e7ef17dfc57c580cbb8d860005e8c3fc1[m[33m ([m[1;36mHEAD -> [m[1;32mramasecundaria[m[33m, [m[1;31morigin/ramasecundaria[m[33m)[m
+Merge: aa6e302 4992781
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Wed Oct 2 00:48:09 2024 -0600
+
+    1/10 commit asistencias
+
+[33mcommit aa6e3023f48b5a81b5420cc06e93128cb44e8fd2[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Tue Oct 1 23:22:01 2024 -0600
+
+    1/10/2024
+
+[33mcommit 021863d979f2b07f91ac9633a170b4e282d443fe[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Sun Sep 22 15:27:13 2024 -0600
+
+    Commit 22/09/2024
+
+[33mcommit d78499d495c30d718e3b8d1c50ff511f81c607c5[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Sun Sep 22 15:27:03 2024 -0600
+
+    Commit 22/09/2024
+
+[33mcommit 4992781a077c70492e55fc95b1954465c02a4a24[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Tue Sep 10 00:41:04 2024 -0600
+
+    Modulos de Asistencias Funcional
+
+[33mcommit 6d28dea1df6aa181988cb14b6ea42fd7b6302c3a[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Sun Sep 1 17:20:00 2024 -0600
+
+    modulos de asistencia resueltos
+
+[33mcommit 658ea80ab6b6f701647d478180364f3079095c90[m[33m ([m[1;31morigin/database_task[m[33m, [m[1;32mdatabase_task[m[33m)[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Sat Aug 17 23:41:36 2024 -0600
+
+    17/08/2024 mayoria de tablas creadas
+
+[33mcommit 1c63fbf9c0c9043db16ffe18118d0af144875117[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Tue Jul 23 23:25:35 2024 -0600
+
+    creacion de tablas principales creadas, espacios seguros,alumnas participantes,mentoras
+
+[33mcommit 393671f5a907fd2ef3b07d700398c1b49f34f958[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Mon Jul 8 19:00:34 2024 -0600
+
+    creacion de tablas principales creada: espacios seguros, mentoras, ninias y adolecentes
+
+[33mcommit 4c062c4eb1aa858826a6a5cb5ede01e74668ba4e[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Mon Jul 8 18:57:07 2024 -0600
+
+    tablas principales creadas
+
+[33mcommit 1e3592b4fd803a42d3b181e782a34ed850f92b73[m
+Merge: 81a73fc 9b4c323
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Tue Jul 2 23:03:39 2024 -0600
+
+    Merge pull request #2 from NealD00/main
+    
+    Actualizacion del FrontEnd
+
+[33mcommit 9b4c32326635858f779f3486a66d9ca9c7a6083b[m[33m ([m[1;31morigin/main[m[33m)[m
+Merge: 81a73fc bfc478a
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Tue Jul 2 22:41:06 2024 -0600
+
+    Merge pull request #1 from NealD00/Features/tablasbd
+    
+    Features/tablasbd   no issues
+
+[33mcommit bfc478a63bfdc2d20ce8ceb3f5c4d13273936613[m[33m ([m[1;31morigin/Features/tablasbd[m[33m)[m
+Author: Beny <benildo.sacalxot@gmail.com>
+Date:   Tue Jul 2 22:34:20 2024 -0600
+
+    Fronted 01-07-2024 casi completo
+
+[33mcommit 1e525cc632d090b2e881a11b362c35701f1ec432[m
+Author: Beny <benildo.sacalxot@gmail.com>
+Date:   Tue Jul 2 22:15:23 2024 -0600
+
+    Frontend3000 casi completo
+
+[33mcommit 81a73fc92c27a82aef4bc4bd40ec1388b94525b7[m[33m ([m[1;32mmain[m[33m)[m
+Merge: fc16793 df97921
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Sat Jun 29 14:38:35 2024 -0600
+
+    Merge branch 'main' of https://github.com/NealD00/REDMI
+
+[33mcommit fc16793ee40d7e7bdf263d4519599c6209d35b64[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Sat Jun 29 14:38:13 2024 -0600
+
+    Imagenes para frontend
+
+[33mcommit 16f21a2639b8896f82face4a7b9707285344355b[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Sat Jun 29 14:36:08 2024 -0600
+
+    imagenes
+
+[33mcommit df979215688b7da020c09544b7cf5fbb528ef0f9[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Wed Jun 26 20:36:19 2024 -0600
+
+    Set up CI with Azure Pipelines
+    
+    [skip ci]
+
+[33mcommit 9fa2d8496ea1c823a33482d81278691f5973e41f[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Tue Jun 25 22:42:45 2024 -0600
+
+    Set up CI with Azure Pipelines
+    
+    [skip ci]
+
+[33mcommit 8d8e238d3926a58da6f8e98872e15f596ecc019e[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Tue Jun 25 21:44:26 2024 -0600
+
+    commit del tema de filament
+
+[33mcommit 025659e27b068248c1fa1c78d2d54174902a23c0[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Mon Jun 10 13:42:56 2024 -0600
+
+    Fronted commit 10-06-2024
+
+[33mcommit 89bc5c5918450ca8eb40616488d2661b3bd751c5[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Mon May 27 22:28:28 2024 -0600
+
+    last commit
+
+[33mcommit de4cb8e0f200e3d11ab8b0a897db5f61ea22a0b4[m
+Author: NealD00 <120283275+NealD00@users.noreply.github.com>
+Date:   Mon May 27 14:59:06 2024 -0600
+
+    siguiente commit, si por alguna razon pasara algo
