@@ -56,10 +56,22 @@ class AsistenciasAdolescentesResource extends Resource
                     ->schema([
                         Forms\Components\BelongsToSelect::make('adolescentes_id')
                             ->label('Nombre Completo')
-                            ->options(Checkbook::where('adolescentes', 1)
-                            ->pluck('name', 'id')->toArray())
+                            //->dependsOn(['espacio_seguros_id']) // Depende de espacio_seguros_id
+                            ->options(function (callable $get) {
+                            // Obtener el valor de espacio_seguros_id
+                                $espacioSeguroId = $get('../espacio_seguros_id'); // Subir un nivel para obtener el valor correcto
+
+                                if ($espacioSeguroId) {
+                                    // Filtrar las niñas según el espacio seguro seleccionado
+                                    return \App\Models\Ninias::where('espacio_seguros_id', $espacioSeguroId)
+                                        ->pluck('nombre_completo', 'id');
+                                }
+
+                                // Si no hay espacio seguro seleccionado, devolver todas las niñas
+                                return \App\Models\Ninias::pluck('nombre_completo', 'id');
+                                })
+                            ->reactive() // Asegura que este campo se actualice cuando cambie espacio_seguros_id  
                             ->relationship('adolescentes', 'nombre_completo')
-                            ->preload()
                             ->ColumnSpan(1)
                             ->required(),
                         Forms\Components\Toggle::make('asistio')

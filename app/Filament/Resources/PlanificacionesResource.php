@@ -86,7 +86,29 @@ class PlanificacionesResource extends Resource
                         ->maxLength(200)
                         ->columnSpan(2),
                 ])->collapsible(),
+
+                Forms\Components\Repeater::make('comentarios')
+                    ->label('Comentarios')
+                    //->Relationship('comentarios')
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('comentario')
+                        ->required()
+                        ->live(onBlur: true)
+                        ->maxLength(60),
+                        Forms\Components\Select::make('mentoras_id')
+                            ->label('Mentora')
+                            ->columnSpan(1)
+                            ->required()
+                            ->relationship('mentoras', 'nombre_completo')
+                            ->reactive(),
+                    ])
+                    ->createItemButtonLabel('Agregar Comentario')
+                    ->minItems(1)
+                    ->required()
+                    ->columnSpan(2),
             ]);
+
     }
 
     public static function table(Table $table): Table

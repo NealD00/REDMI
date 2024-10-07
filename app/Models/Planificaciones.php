@@ -13,6 +13,16 @@ class Planificaciones extends Model
 {
     use HasFactory;
     #use HasTags;
+
+    protected $fillable = [
+        'mentoras_id',
+        'imagen',
+        'titulo',
+        'descripcion',
+        'estado',
+        'fecha',
+        'etiqueta'
+    ];
     
     public function mentoras(): BelongsTo
     {
@@ -24,15 +34,11 @@ class Planificaciones extends Model
         return $this->belongsTo(EspacioSeguro::class,'espacio_seguros_id');
     }
 
-    protected $fillable = [
-        'mentoras_id',
-        'imagen',
-        'titulo',
-        'descripcion',
-        'estado',
-        'fecha',
-        'etiqueta',
-    ];
+    public function comentarios(): HasMany
+    {
+        return $this->hasMany(comentarios::class,'planificaciones_id','id');
+    }
+
 
     protected $casts = [
         'imagen' => 'array',

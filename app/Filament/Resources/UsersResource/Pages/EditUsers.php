@@ -17,4 +17,13 @@ class EditUsers extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    public function mutateFormDataBeforeSAve(array $data):array
+    {
+        if (array_key_exists('new_password', $data) || filled($data['new_password'])) {
+            $this->record->password = Hash::make($data['password']);
+        }
+
+        return $data;
+    }
 }
