@@ -14,7 +14,11 @@ class Mentoras extends Model
     use HasFactory;
     
     protected $fillable = [
-        'nombre',
+        'primer_nombre',
+        'segundo_nombre',
+        'tercer_nombre',
+        'primer_apellido',
+        'segundo_apellido',
         'grupo',
         'correo',
         'espacio_seguros_id',
@@ -39,7 +43,11 @@ class Mentoras extends Model
         parent::boot();
 
         static::saving(function ($model) {
+            //calculo de la edad a partir de la fecha de nacimiento
             $model->edad = Carbon::parse($model->fechaNacimiento)->age;
+
+            //concatenacion de nombre y apellido para obtener nombre completo
+            $model->nombre_completo = $model->primer_nombre . ' ' . $model->primer_apellido;
         });
     }
     /*

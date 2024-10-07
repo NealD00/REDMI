@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('asistencia_ninias', function (Blueprint $table) {
+        Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->string('actividad');
-            $table->date('fecha');
-            $table->foreignId('espacio_seguros_id')->constrained('espacio_seguros')->cascadeOnDelete();
+            $table->foreignId('mentoras_id')->constrained('mentoras');
+            $table->foreignId('planificaciones_id')->constrained('planificaciones');
+            $table->string('comentario');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('asistencia_ninias');
+        Schema::dropIfExists('comentarios');
     }
 };

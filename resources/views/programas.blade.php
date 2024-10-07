@@ -50,10 +50,7 @@
             <img src="icons/ubi.svg" alt="">
             <div>
                 <span class="font-bold text-orange-600">Patziquiquim</span>
-                <p class="line-clamp-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                </p>
+                
             </div>
         </div>
 
@@ -61,10 +58,6 @@
             <img src="icons/ubi.svg" alt="">
             <div>
                 <span class="font-bold text-orange-600">Caserio Pasuc</span>
-                <p class="line-clamp-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                </p>
             </div>
         </div>
 
@@ -72,10 +65,6 @@
             <img src="icons/ubi.svg" alt="">
             <div>
                 <span class="font-bold text-orange-600">Paraje Chucapja</span>
-                <p class="line-clamp-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                </p>
             </div>
         </div>
 
@@ -83,10 +72,6 @@
             <img src="icons/ubi.svg" alt="">
             <div>
                 <span class="font-bold text-orange-600">Paraje Patzaquibala</span>
-                <p class="line-clamp-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                </p>
             </div>
         </div>
 
@@ -94,10 +79,6 @@
             <img src="icons/ubi.svg" alt="">
             <div>
                 <span class="font-bold text-orange-600">Payak Juyub</span>
-                <p class="line-clamp-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                </p>
             </div>
         </div>
 
@@ -105,21 +86,13 @@
             <img src="icons/ubi.svg" alt="">
             <div>
                 <span class="font-bold text-orange-600">Choyocte</span>
-                <p class="line-clamp-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                </p>
             </div>
         </div>
 
         <div class="cursor-pointer transition-all duration-500 hover:translate-y-2 bg-neutral-50 rounded-lg shadow-xl flex flex-row items-center justify-evenly gap-4 p-4">
             <img src="icons/ubi.svg" alt="">
             <div>
-                <span class="font-bold text-orange-600">Posito</span>
-                <p class="line-clamp-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                </p>
+                <span class="font-bold text-orange-600">Positos</span>
             </div>
         </div>
     </div>

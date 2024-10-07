@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class AsistenciaNinias extends Model
+class AsistenciasAdolescentes extends Model
 {
     use HasFactory;
 
@@ -22,17 +22,14 @@ class AsistenciaNinias extends Model
         return $this->belongsTo(EspacioSeguro::class,'espacio_seguros_id');
     }
 
-    public function ninias(): BelongsTo
+    public function adolescentes(): BelongsTo
     {
-        return $this->belongsTo(Ninias::class,'ninias_id');
+        return $this->belongsTo(Adolescentes::class,'adolescentes_id');
     }
 
-    public function nintermedios(): HasMany
+    public function aintermedios(): HasMany
     {
-        return $this->hasMany(nintermedios::class,'asistencia_ninias_id','id');
+        return $this->hasMany(aintermedios::class,'asistencias_adolescentes_id','id');
     }
 
-    /*public function getNombreCompletoAttribute() {
-        return "{$this->primer_nombre} {$this->primer_apellido}";
-    }*/
 }

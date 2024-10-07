@@ -32,19 +32,22 @@ class AdolescentesResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('primer_nombre')
                             ->label('Primer Nombre')
+                            ->maxLength(15)
                             ->required(),
-                        /*Forms\Components\TextInput::make('segundo_nombre')
-                            ->label('Segundo Nombre'), */                         
+                        Forms\Components\TextInput::make('segundo_nombre')
+                            ->label('Segundo Nombre')
+                            ->maxLength(15),                        
                         Forms\Components\TextInput::make('primer_apellido')
                             ->label('Primer Apellido')
+                            ->maxLength(15)
                             ->required(),
-                        /*Forms\Components\TextInput::make('segundo_apellido')
-                            ->label('Segundo Apellido'),*/
+                        Forms\Components\TextInput::make('segundo_apellido')
+                            ->label('Segundo Apellido')
+                            ->maxLength(15),
                         Forms\Components\DatePicker::make('fecha_nacimiento')                 
                             ->label('Fecha de Nacimiento')
-                            ->after('1900-01-01')
-                            ->before(now())
-                            ->required(),       
+                            ->required(),      
+
                         /*Forms\Components\TextInput::make('edad')             
                             ->label('Edad')
                             ->required(),   */
@@ -66,7 +69,8 @@ class AdolescentesResource extends Resource
                             ]),
                         Forms\Components\TextInput::make('telefono')
                             ->label('Telefono')
-                            ->type('tel')
+                            ->maxLength(8)
+                            ->tel()
                             ->required(),
                     ])->columns(3),
 
@@ -78,7 +82,8 @@ class AdolescentesResource extends Resource
                             ->required(),
                         Forms\Components\TextInput::make('telefono_encargado')
                             ->label('Telefono del Encargado')
-                            ->type('tel')
+                            ->maxLength(8)
+                            ->tel()
                             ->required(),
                 ])->columns(2),
                 
@@ -87,7 +92,7 @@ class AdolescentesResource extends Resource
                     ->schema([
                         Forms\Components\BelongsToSelect::make('mentoras_id')    
                             ->label('Mentora')
-                            ->relationship('mentoras', 'nombre'),
+                            ->relationship('mentoras', 'nombre_completo'),
 
                         /*Forms\Components\Select::make('rango')           
                             ->label('Rango')
@@ -104,8 +109,19 @@ class AdolescentesResource extends Resource
                             ->required(),
                         Forms\Components\DatePicker::make('fecha_inscripcion')  
                             ->label('Fecha de Inscripcion')
-                            ->required(),
+                            ->required()
+                            ->default(today()),
                     ])->columns(2),
+                    Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\DateTimePicker::make('created_at')
+                            ->label('Fecha de Creacion')
+                            ->disabled(),
+                        Forms\Components\DateTimePicker::make('updated_at')
+                            ->label('Ultima Actualizacion')
+                            ->disabled(),
+                    ])->collapsible()
+                      ->columns(2),
             ]);
     }
 
@@ -113,7 +129,11 @@ class AdolescentesResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('primer_nombre')
+                Tables\Columns\TextColumn::make('nombre_completo')
+                    ->label('Nombre Completo')
+                    ->sortable()
+                    ->searchable(),
+                /*Tables\Columns\TextColumn::make('primer_nombre')
                     ->label('Primer Nombre')
                     ->searchable()
                     ->sortable(),
@@ -124,7 +144,7 @@ class AdolescentesResource extends Resource
                     ->label('Primer Apellido')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('segundo_apellido')
-                    ->label('Segundo Apellido'),
+                    ->label('Segundo Apellido'),*/
                 Tables\Columns\TextColumn::make('fecha_nacimiento')
                     ->label('Fecha de Nacimiento')
                     ->date(),
@@ -142,7 +162,7 @@ class AdolescentesResource extends Resource
                     ->label('Fecha de Inscripcion'),
                 /*Tables\Columns\TextColumn::make('rango')
                     ->label('Rango'),*/
-                Tables\Columns\TextColumn::make('mentoras.nombre')
+                Tables\Columns\TextColumn::make('mentoras.nombre_completo')
                     ->label('Mentora'),
                 Tables\Columns\TextColumn::make('espacioseguro.nombre')
                     ->label('Espacio Seguro')

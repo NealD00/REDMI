@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('adolescentes', function (Blueprint $table) {
             $table->id();
             $table->string('primer_nombre');
-            $table->string('segundo_nombre') ->nullable();
+            $table->string('segundo_nombre')->nullable();
+            $table->string('tercer_nombre')->nullable();
             $table->string('primer_apellido');
             $table->string('segundo_apellido')->nullable();
             $table->date('fecha_nacimiento');
@@ -27,6 +28,7 @@ return new class extends Migration
             #$table->string('rango');
             $table->foreignId('mentoras_id')->constrained('mentoras')->cascadeOnDelete();
             $table->foreignId('espacio_seguros_id')->constrained('espacio_seguros')->cascadeOnDelete();
+            $table->string('nombre_completo')->nullable();
             $table->timestamps();
         });
     }

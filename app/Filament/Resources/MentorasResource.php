@@ -31,21 +31,37 @@ class MentorasResource extends Resource
             ->schema([
                 Forms\Components\Section::make()
                     ->schema([
-                    Forms\Components\TextInput::make('nombre')
-                        ->label('Nombre Completo')
+                    Forms\Components\TextInput::make('primer_nombre')
+                        ->label('Primer Nombre')
+                        ->maxLength(15)
                         ->required(),
+                    Forms\Components\TextInput::make('segundo_nombre')
+                        ->label('Segundo Nombre')
+                        ->maxLength(15),
+                    Forms\Components\TextInput::make('tercer_nombre')
+                        ->label('Tercer Nombre')
+                        ->maxLength(15),
+                    Forms\Components\TextInput::make('primer_apellido')
+                        ->label('Primer Apellido')
+                        ->required()
+                        ->maxLength(15),
+                    Forms\Components\TextInput::make('segundo_apellido')
+                        ->label('Segundo Apellido')
+                        ->maxLength(15),
                     Forms\Components\DatePicker::make('fechaNacimiento')
                         ->label('Fecha de Nacimiento')
-                        ->after('1900-01-01')
+                        ->after('1975-01-01')
                         ->before(now())
                         ->required(),
                     Forms\Components\TextInput::make('correo')
                         ->label('Correo Electronico')
+                        ->maxLength(50)
                         ->email()
                         ->required(),
                     Forms\Components\TextInput::make('telefono')
                         ->label('Telefono')
-                        ->type('tel')
+                        ->maxLength(8)
+                        ->tel()
                         ->required(),
                 ])->columns(2),
                 
@@ -95,29 +111,51 @@ class MentorasResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nombre')
-                    ->label('Nombre Completo')
-                    ->searchable()
-                    ->sortable(),
+                Tables\Columns\Layout\Split::make([
+                    Tables\Columns\Layout\Stack::make([
+                        Tables\Columns\TextColumn::make('nombre_completo')
+                            ->label('Nombre Completo')
+                            ->searchable()
+                            #->weight('medium')
+                            ->sortable()
+                            ->alignleft(),
+                            Tables\Columns\TextColumn::make('fechaNacimiento')
+                            ->label('Fecha de Nacimiento')
+                            ->date(),
+                        ])->space(),
                
-                Tables\Columns\TextColumn::make('grupo'),
-                Tables\Columns\TextColumn::make('correo')
-                    ->label('Correo'),
-                Tables\Columns\TextColumn::make('espacioseguro.nombre')
-                    ->label('Espacio Seguro'),
-                    #->implode(', '),
-                Tables\Columns\TextColumn::make('espacioseguro2.nombre')
-                    ->label('Espacio Seguro2')
-                    #->nullable()
-                    ->default(''),
-                Tables\Columns\TextColumn::make('fechaNacimiento')
-                    ->label('Fecha de Nacimiento')
-                    ->date(),
-                Tables\Columns\TextColumn::make('edad'),
-                Tables\Columns\TextColumn::make('telefono'),
+                    Tables\Columns\Layout\Stack::make([
+                        Tables\Columns\TextColumn::make('espacioseguro.nombre')
+                            ->label('Espacio Seguro')
+                            ->alignleft(),
+                            #->implode(', '),
+                        Tables\Columns\TextColumn::make('espacioseguro2.nombre')
+                            ->label('Espacio Seguro2')
+                            #->nullable()
+                            ->default('')
+                            ->alignleft(),
+                    ])->space(),
+
+                    Tables\Columns\Layout\Stack::make([
+                        Tables\Columns\TextColumn::make('grupo'),
+                    ])->space(),
+                    
+                    Tables\Columns\Layout\Stack::make([
+                        Tables\Columns\TextColumn::make('correo')
+                            ->label('Correo')
+                            ->color('gray')
+                            ->alignleft(),
+                
+                        Tables\Columns\TextColumn::make('telefono'),
+                        
+                    ])->space(),
+                    /*Tables\Columns\Layout\Stack::make([
+
+                        Tables\Columns\TextColumn::make('edad'),
+                    ]),*/
+                ])->from('md'),
             ])
-
-
+            
             ->filters([
                 //
             ])

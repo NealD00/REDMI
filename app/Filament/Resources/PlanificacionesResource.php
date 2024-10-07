@@ -12,8 +12,11 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components;
 #use Filament\Forms\Components\SpatieTagsInput;
-#use Filament\Pages\SubNavigationPosition;
+use Filament\Pages\SubNavigationPosition;
+use Filament\Resources\Pages\Page;
 
 class PlanificacionesResource extends Resource
 {
@@ -36,7 +39,7 @@ class PlanificacionesResource extends Resource
                 Forms\Components\TextInput::make('titulo')
                     ->required()
                     ->live(onBlur: true)
-                    ->maxLength(255),
+                    ->maxLength(60),
                 Forms\Components\Select::make('etiqueta')
                     ->label('Actividad')
                     ->options([
@@ -45,10 +48,10 @@ class PlanificacionesResource extends Resource
                         'otro' => 'Otro',
                     ])
                     ->required(),
-                Forms\Components\FileUpload::make('imagen')
+                /*Forms\Components\FileUpload::make('imagen')
                     ->label('Imagen')
                     ->directory('planificaciones')
-                    ->image(),
+                    ->image(),*/
                 Forms\Components\Select::make('estado')
                     ->options([
                         'pendiente' => 'Pendiente',
@@ -62,20 +65,50 @@ class PlanificacionesResource extends Resource
                 /*Forms\Components\TextInput::make('imagen')
                     ->required()
                     ->maxLength(255),*/
-                
                 Forms\Components\BelongsToSelect::make('mentoras_id')    
                     ->label('Mentora')
-                    ->relationship('mentoras', 'nombre'),
+                    ->relationship('mentoras', 'nombre_completo'),
                 #SpatieTagsInput::make('tags'),
             ])->columns(3),
+
+            Forms\Components\Section::make()
+                ->schema([
+                    Forms\Components\FileUpload::make('imagen')
+                    ->label('Imagen')
+                    ->directory('planificaciones')
+                    ->image(),
+                ])->collapsible(),
              
             Forms\Components\Section::make()
                 ->schema([
                     Forms\Components\MarkdownEditor::make('descripcion')
                         ->required()
+                        ->maxLength(200)
                         ->columnSpan(2),
                 ])->collapsible(),
+
+                Forms\Components\Repeater::make('comentarios')
+                    ->label('Comentarios')
+                    //->Relationship('comentarios')
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('comentario')
+                        ->required()
+                        ->live(onBlur: true)
+                        ->maxLength(60),
+                        Forms\Components\Select::make('mentoras_id')
+                            ->label('Mentora')
+                            ->columnSpan(1)
+                            ->required()
+                            ->relationship('mentoras', 'nombre_completo')
+                            ->reactive(),
+                    ])
+                    ->createItemButtonLabel('Agregar Comentario')
+                    ->minItems(1)
+                    ->required()
+                    ->columnSpan(2),
             ]);
+
     }
 
     public static function table(Table $table): Table
@@ -100,6 +133,9 @@ class PlanificacionesResource extends Resource
                 /*Tables\Columns\TextColumn::make('descripcion')
                     ->label('Descripcion')
                     ->searchable(),*/
+                Tables\Columns\TextColumn::make('fecha')
+                    ->date()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('estado')
                     ->label('Estado')
                     ->badge()
@@ -109,10 +145,8 @@ class PlanificacionesResource extends Resource
                         'danger'=> 'cancelado',
                     ])
                     ->searchable(),
-                Tables\Columns\TextColumn::make('fecha')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('mentoras.nombre')
+                
+                Tables\Columns\TextColumn::make('mentoras.nombre_completo')
                     ->label('Mentora'),
                 Tables\Columns\ImageColumn::make('imagen')
                     ->label('Imagen')
@@ -149,6 +183,54 @@ class PlanificacionesResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Components\Section::make()->schema([
+                    Components\Split::make([
+                        Components\Grid::make(2)
+                        ->schema([
+                            Components\Group::make([
+                                Components\TextEntry::make('titulo'),
+                                Components\TextEntry::make('etiqueta')
+                                    ->hiddenLabel(),
+                                Components\TextEntry::make('fecha')
+                                    ->hiddenLabel(),
+                            ]),
+                            Components\Group::make([
+                                Components\TextEntry::make('estado')
+                                    ->badge()
+                                    ->color('success'),
+                                Components\TextEntry::make('mentoras.nombre_completo')
+                                    ->label('Mentora'),
+                            ])
+                        ]),
+                        Components\ImageEntry::make('imagen')
+                            ->hiddenLabel()
+                            ->grow(false),
+                        
+                    ])->from('lg'),
+                ]),
+                Components\Section::make('descripcion')
+                    ->schema([
+                        Components\TextEntry::make('descripcion')
+                            ->hiddenLabel(),
+                    ])
+                    ->collapsible(),
+                Components\Section::make('created_at')
+                    ->label('Fechas')
+                    ->columns(2)
+                    ->schema([
+                        Components\TextEntry::make('created_at')
+                            ->label('Fecha de Creacion'),
+                        Components\TextEntry::make('updated_at')
+                            ->label('Ultima Actualizacion'),
+                    ])
+                    ->collapsible(),
+            ]);
+    }
     
     public static function getRelations(): array
     {
@@ -157,11 +239,20 @@ class PlanificacionesResource extends Resource
         ];
     }
     
-    public static function getRecordSubNavigation(Page $page): array
+    /*public static function getRecordSubNavigation(Page $page): array
     {
         return $page->generateNavigationsitems([
             Pages\ViewPlanificaciones::class,
             Pages\EditPlanificaciones::class,
+        ]);
+    }*/
+
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            Pages\ViewPlanificaciones::class,
+            Pages\EditPlanificaciones::class,
+            Pages\ManagePlanificacionesComments::class,
         ]);
     }
 
