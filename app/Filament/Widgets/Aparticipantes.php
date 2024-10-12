@@ -18,25 +18,20 @@ class Aparticipantes extends BaseWidget
     public function table(Table $table): Table
     {
         return $table
-            /*->query(
-                Adolescentes::query()
-                ->selectRaw('espacioseguro.nombre, COUNT(*) as total_participantes')
-                ->join('espacio_seguros', 'adolescentes.espacioseguro_id', '=', 'espacio_seguros.id')
-                ->groupBy('espacioseguro.nombre')
-            )
-            ->columns([
-                TextColumn::make('espacioseguro.nombre')->label('Espacio Seguro'),
-                TextColumn::make('total_participantes')->label('Número de Participantes'),
-            ]);*/
+            
             ->query(
                 Adolescentes::query()
-                /*->selectRaw('espacio_seguros.nombre, COUNT(*) as total_participantes')
+                ->selectRaw('MIN(espacio_seguros.id) as id, espacio_seguros.nombre, COUNT(*) as total_participantes')
                 ->join('espacio_seguros', 'adolescentes.espacio_seguros_id', '=', 'espacio_seguros.id')
-                ->groupBy('espacio_seguros.nombre')*/
+                ->groupBy('espacio_seguros.nombre')
             )
             ->columns([
-                TextColumn::make('nombre')->label('Espacio Seguro'),
-                TextColumn::make('total_participantes')->label('Número de Participantes'),
+                TextColumn::make('nombre')->label('Espacio Seguro')
+                 ->icon('heroicon-o-building-storefront'),
+                TextColumn::make('total_participantes')->label('Número de Participantes')
+                ->aligncenter(),
             ]);
+            //->recordUrl(fn ($record) => route('espacio_seguros.edit', $record->id)) // Asegúrate de ajustar esta ruta según sea necesario.
+            //->getRecordKeyUsing(fn ($record) => $record->id); // Especifica la clave de registro aquí.;
     }
 }
