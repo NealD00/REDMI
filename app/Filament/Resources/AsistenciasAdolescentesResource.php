@@ -14,14 +14,14 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Componnents\Tooggle;
-
+use Filament\Forms\Get;
 
 class AsistenciasAdolescentesResource extends Resource
 {
     protected static ?string $model = AsistenciasAdolescentes::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-table-cells';
-    
+
     protected static ?string $modelLabel = 'Asistencia Adolescentes';
 
     protected static ?string $navigationGroup = 'Asistencias';
@@ -43,35 +43,30 @@ class AsistenciasAdolescentesResource extends Resource
                         ->required(),
                     Forms\Components\BelongsToSelect::make('espacio_seguros_id')
                         ->label('Espacio Seguro')
-                        ->reactive()
-                        ->preload()
-                        ->relationship('espacioseguro', 'nombre')
+                        ->live()
+                        // ->preload()
+                        ->options(\App\Models\EspacioSeguro::pluck('nombre', 'id'))
+                        // ->relationship('espacioseguro', 'nombre')
                         ->required(),
                 ])->columns(2),
-                
+
                 Forms\Components\Repeater::make('aintermedios')
                     ->label('Lista de Adolescentes')
                     ->Relationship('aintermedios')
                     ->columns(2)
                     ->schema([
-                        Forms\Components\BelongsToSelect::make('adolescentes_id')
+                        Forms\Components\Select::make('adolescentes_id')
                             ->label('Nombre Completo')
-                            //->dependsOn(['espacio_seguros_id']) // Depende de espacio_seguros_id
-                            ->options(function (callable $get) {
-                            // Obtener el valor de espacio_seguros_id
-                                $espacioSeguroId = $get('../espacio_seguros_id'); // Subir un nivel para obtener el valor correcto
-
+                            ->options(function (Get $get) {
+                                $espacioSeguroId = $get('../../espacio_seguros_id');
                                 if ($espacioSeguroId) {
-                                    // Filtrar las niñas según el espacio seguro seleccionado
                                     return \App\Models\Ninias::where('espacio_seguros_id', $espacioSeguroId)
                                         ->pluck('nombre_completo', 'id');
                                 }
-
-                                // Si no hay espacio seguro seleccionado, devolver todas las niñas
                                 return \App\Models\Ninias::pluck('nombre_completo', 'id');
-                                })
-                            ->reactive() // Asegura que este campo se actualice cuando cambie espacio_seguros_id  
-                            ->relationship('adolescentes', 'nombre_completo')
+                            })
+                            ->reactive()
+
                             ->ColumnSpan(1)
                             ->required(),
                         Forms\Components\Toggle::make('asistio')
@@ -83,7 +78,7 @@ class AsistenciasAdolescentesResource extends Resource
                     ->minItems(1)
                     ->required()
                     ->columnSpan(2),
-                
+
             ]);
     }
 
@@ -114,14 +109,14 @@ class AsistenciasAdolescentesResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -130,5 +125,5 @@ class AsistenciasAdolescentesResource extends Resource
             'view' => Pages\ViewAsistenciasAdolescentes::route('/{record}'),
             'edit' => Pages\EditAsistenciasAdolescentes::route('/{record}/edit'),
         ];
-    }    
+    }
 }

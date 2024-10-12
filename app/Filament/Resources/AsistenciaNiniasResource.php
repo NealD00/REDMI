@@ -14,6 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Componnents\Tooggle;
+use Filament\Forms\Get;
 
 class AsistenciaNiniasResource extends Resource
 {
@@ -42,12 +43,12 @@ class AsistenciaNiniasResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('espacio_seguros_id')
                     ->label('Espacio Seguro')
-                    ->preload()
-                    ->reactive()
+                    // ->preload()
+                    ->live()
                     //->relationship('espacioseguro', 'nombre')
                     ->options(\App\Models\EspacioSeguro::pluck('nombre', 'id'))
                     ->required(),
-                
+
                 ])->columns(2),
 
             Forms\Components\Repeater::make('nintermedios')
@@ -58,23 +59,16 @@ class AsistenciaNiniasResource extends Resource
                         Forms\Components\Select::make('ninias_id')
                         ->label('Nombre Completo')
                         ->columnSpan(1)
-                        ->required()// Hace el campo reactivo a cambios
-                        //->dependsOn(['espacio_seguros_id']) // Depende de espacio_seguros_id
-                        ->options(function (callable $get) {
-                            // Obtener el valor de espacio_seguros_id
-                            $espacioSeguroId = $get('../espacio_seguros_id'); // Subir un nivel para obtener el valor correcto
-
+                        ->reactive()
+                        ->required()
+                        ->options(function (Get $get) {
+                            $espacioSeguroId = $get('../../espacio_seguros_id');
                             if ($espacioSeguroId) {
-                                // Filtrar las niñas según el espacio seguro seleccionado
                                 return \App\Models\Ninias::where('espacio_seguros_id', $espacioSeguroId)
                                     ->pluck('nombre_completo', 'id');
                             }
-
-                            // Si no hay espacio seguro seleccionado, devolver todas las niñas
                             return \App\Models\Ninias::pluck('nombre_completo', 'id');
-                        })
-                        ->reactive() // Asegura que este campo se actualice cuando cambie espacio_seguros_id  
-                        ->relationship('ninias', 'nombre_completo'),
+                        }),
                         Forms\Components\Toggle::make('asistio')
                             ->label('Asistió')
                             ->inline(false)
@@ -117,14 +111,14 @@ class AsistenciaNiniasResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -133,6 +127,6 @@ class AsistenciaNiniasResource extends Resource
             'view' => Pages\ViewAsistenciaNinias::route('/{record}'),
             'edit' => Pages\EditAsistenciaNinias::route('/{record}/edit'),
         ];
-    }    
+    }
 
 }
