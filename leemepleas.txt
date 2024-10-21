@@ -29,3 +29,8 @@ php artisan make:filament-widget grafica1 --chart
 php artisan migrate:status
 
 
+//docker compose build
+
+shield:super-admin
+
+

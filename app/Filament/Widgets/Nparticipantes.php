@@ -12,7 +12,7 @@ use Filament\Tables\Columns\TextColumn;
 class Nparticipantes extends BaseWidget
 {
     protected static ?string $heading = 'Participantes Niñas por Comunidad';
-    protected static ?int $sort=2;
+    protected static ?int $sort=4;
 
     public function table(Table $table): Table
     {

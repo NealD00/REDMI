@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Filters\SelectFilter;
 
 class AdolescentesResource extends Resource
 {
@@ -133,6 +134,13 @@ class AdolescentesResource extends Resource
                     ->label('Nombre Completo')
                     ->sortable()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('mentoras.nombre_completo')
+                    ->label('Mentora'),
+                Tables\Columns\TextColumn::make('espacioseguro.nombre')
+                    ->label('Espacio Seguro')
+                    ->searchable()
+                    #->searchDebounceTimeout(500)
+                    ->icon('heroicon-o-building-storefront'),
                 /*Tables\Columns\TextColumn::make('primer_nombre')
                     ->label('Primer Nombre')
                     ->searchable()
@@ -162,16 +170,14 @@ class AdolescentesResource extends Resource
                     ->label('Fecha de Inscripcion'),
                 /*Tables\Columns\TextColumn::make('rango')
                     ->label('Rango'),*/
-                Tables\Columns\TextColumn::make('mentoras.nombre_completo')
-                    ->label('Mentora'),
-                Tables\Columns\TextColumn::make('espacioseguro.nombre')
-                    ->label('Espacio Seguro')
-                    ->searchable()
-                    #->searchDebounceTimeout(500)
-                    ->icon('heroicon-o-building-storefront'),
             ])
             ->filters([
-                //
+                    SelectFilter::make('espacioseguro_id')
+                        ->label('Filtrar por comunidad')
+                        ->relationship('espacioseguro', 'nombre')
+                        ->preload()
+                        ->indicator('Espacios Seguros')
+                        ->searchable(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

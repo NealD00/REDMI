@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class grafica1 extends ChartWidget
 {
     protected static ?string $heading = 'Participantes Niñas por Comunidad';
-    protected static ?int $sort=4;
+    protected static ?int $sort=6;
 
     protected function getData(): array
     {
