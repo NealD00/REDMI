@@ -25,6 +25,20 @@ class Adolescentes extends Model
         return $this->belongsTo(EspacioSeguro::class,'espacio_seguros_id');
     }
 
+    public function asistenciasadolescentes()
+    {
+        // belongsToMany(asistencia::class, tabla_pivote, clave_foránea_en_pivote, clave_foránea_relacionada)
+        return $this->belongsToMany(AsistenciasAdolescentes::class, 'aintermedios', 'adolescentes_id', 'asistencias_adolescentes_id')
+                    ->withPivot('asistio'); // Incluye el campo asistio desde la tabla pivote
+    }
+
+
+    /*public function asistencias()
+    {
+        return $this->belongsToMany(Asistencias::class, 'aintermedios', 'adolescente_id', 'asistencias_adolescentes_id')
+                    ->withPivot('asistio');
+    }*/
+
     protected $fillable = [
         'primer_nombre',
         'segundo_nombre',

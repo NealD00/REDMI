@@ -8,7 +8,7 @@ use App\Models\Adolescentes;
 class grafica2 extends ChartWidget
 {
     protected static ?string $heading = 'Participantes Adolescentes por Comunidad';
-    protected static ?int $sort=5;
+    protected static ?int $sort=7;
 
     protected function getData(): array
     {

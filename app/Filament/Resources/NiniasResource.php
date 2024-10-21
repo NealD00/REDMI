@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Filters\SelectFilter;
 
 class NiniasResource extends Resource
 {
@@ -140,6 +141,13 @@ class NiniasResource extends Resource
                     ->label('Nombre')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('mentoras.nombre_completo')
+                    ->label('Mentora'),
+                Tables\Columns\TextColumn::make('espacioseguro.nombre')
+                    ->label('Espacio Seguro')
+                    ->searchable()
+                    #->searchDebounceTimeout(500)
+                    ->icon('heroicon-o-building-storefront'),
                 /*Tables\Columns\TextColumn::make('segundo_nombre')
                     ->label('Segundo Nombre')
                     ->searchable(),
@@ -167,16 +175,14 @@ class NiniasResource extends Resource
                     ->sortable(),
                 /*Tables\Columns\TextColumn::make('rango')
                     ->label('Rango'),*/
-                Tables\Columns\TextColumn::make('mentoras.nombre_completo')
-                    ->label('Mentora'),
-                Tables\Columns\TextColumn::make('espacioseguro.nombre')
-                    ->label('Espacio Seguro')
-                    ->searchable()
-                    #->searchDebounceTimeout(500)
-                    ->icon('heroicon-o-building-storefront'),
             ])
             ->filters([
-                //
+                SelectFilter::make('espacioseguro_id')
+                    ->label('Filtrar por comunidad')
+                    ->relationship('espacioseguro', 'nombre')
+                    ->preload()
+                    ->indicator('Espacios Seguros')
+                    ->searchable(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

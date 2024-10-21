@@ -60,10 +60,10 @@ class AsistenciasAdolescentesResource extends Resource
                             ->options(function (Get $get) {
                                 $espacioSeguroId = $get('../../espacio_seguros_id');
                                 if ($espacioSeguroId) {
-                                    return \App\Models\Ninias::where('espacio_seguros_id', $espacioSeguroId)
+                                    return \App\Models\Adolescentes::where('espacio_seguros_id', $espacioSeguroId)
                                         ->pluck('nombre_completo', 'id');
                                 }
-                                return \App\Models\Ninias::pluck('nombre_completo', 'id');
+                                return \App\Models\Adolescentes::pluck('nombre_completo', 'id');
                             })
                             ->reactive()
 

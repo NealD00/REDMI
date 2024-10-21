@@ -43,6 +43,12 @@ class UsersResource extends Resource
                         ->required(),
                         //->placeholder('Nombre Completo')
                         //->disabled(),
+                    Forms\Components\Select::make('roles')
+                        ->relationship('roles', 'name')
+                        ->reactive()
+                        ->multiple()
+                        ->preload()
+                        ->searchable(),
                     Forms\Components\TextInput::make('email')
                         ->label('Correo Electrónico')
                         ->required()
@@ -58,14 +64,8 @@ class UsersResource extends Resource
                         ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                         //->visible(fn ($livewire) => $livewire instanceof CreateUsers)
                         //->visible(fn ($livewire) => true) // Hacerlo siempre visible para fines de diagnóstico
-                        ->rule(Password::default()),            
-                    Forms\Components\Select::make('roles')
-                        ->relationship('roles', 'name')
-                        ->reactive()
-                        ->multiple()
-                        ->preload()
-                        ->searchable(),
-                ]),
+                        ->rule(Password::default()),              
+                ])->columns(2),
 
               /*Forms\Components\Section::make('Usuario Nueva contraseña')
                 ->schema([

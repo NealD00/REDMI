@@ -5,28 +5,25 @@ namespace App\Filament\Widgets;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
-use App\Models\Adolescentes;
+use App\Models\Ninias;
+use App\Modesl\AsistenciaNinias;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-//use Filament\Tables\Filters\DateRangeFilter;
 
-
-class Asistencias extends BaseWidget
+class nAsistencias extends BaseWidget
 {
-
-    protected static ?string $heading = 'Control de Asistencias de Adolescentes';
-    protected static ?int $sort=3;
-
+    protected static ?string $heading = 'Control de Asistencias de Niñas';
+    protected static ?int $sort=2;
+    
     public function table(Table $table): Table
     {
         return $table
             ->query(
-                //Adolescentes::query()
-                Adolescentes::query()
+                Ninias::query()
                 ->withCount([
-                    'asistenciasadolescentes as total_asistencias', // Contar todas las asistencias
-                    'asistenciasadolescentes as total_participaciones' => function ($query) {
-                        $query->where('aintermedios.asistio', true);
+                    'asistencianinias as total_asistencias', // Contar todas las asistencias
+                    'asistencianinias as total_participaciones' => function ($query) {
+                        $query->where('nintermedios.asistio', true);
                         //$query->wherePivot('asistio', true); // Contar asistencias donde asistio
                     },
                 ]) 
@@ -52,11 +49,6 @@ class Asistencias extends BaseWidget
                     ->preload()
                     ->indicator('Espacios Seguros')
                     ->searchable(),
-                /*DateRangeFilter::make('fecha')
-                    ->label('Rango de Fechas')
-                    ->placeholder('Selecciona un rango de fechas')
-                    ->column('asienciasadolescentes.fecha'),*/
             ]);
     }
 }
-

@@ -84,7 +84,10 @@
                 <img src="images/umg.png" width="100" alt="">
             </div>
         <div class="flex-1 mb-4">
-            <p class="text-sm text-white">Una organización comprometida con brindar mentorías a niñas y jóvenes del departamento de Totonicapán, enfocada en el desarrollo de habilidades esenciales para su crecimiento social y personal.</p>
+            <!--<p class="text-sm text-white">Una organización comprometida con brindar mentorías a niñas y jóvenes del departamento de Totonicapán, enfocada en el desarrollo de habilidades esenciales para su crecimiento social y personal.</p>-->
+            <p class="text-sm text-white">Proyecto de graduacioón realizado por: Benildo Edilsar Sacalxot Ordoñez para optar por por el grado academico LICENCIADO EN INGENIERÍA EN SISTEMAS DE INFORMACIÓN Y CIENCIAS DE LA COMPUTACIÓN Y TÍTULO PROFESIONAL DE INGENIERO EN SISTEMAS DE INFORMACIÓN Y CIENCIAS DE LA COMPUTACIÓN.
+             UNIVERSIDAD MARIANO GALVEZ 2024   
+            </p>
         </div>
         <div class="flex-1 mb-4 text-right">
             <h4 class="text-lg font-semibold mb-2">Redes Sociales</h4>

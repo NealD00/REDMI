@@ -18,6 +18,8 @@ use Filament\Infolists\Components;
 use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
 use Illuminate\Support\Facades\Auth;
+use Filament\Infolists\Components as InfolistComponents;
+use Filament\Forms\Components as FormComponents;
 
 class PlanificacionesResource extends Resource
 {
@@ -84,7 +86,7 @@ class PlanificacionesResource extends Resource
                     ->schema([
                         Forms\Components\MarkdownEditor::make('descripcion')
                             ->required()
-                            ->maxLength(200)
+                            ->maxLength(500)
                             ->columnSpan(2),
                     ])->collapsible(),
 
@@ -125,10 +127,10 @@ class PlanificacionesResource extends Resource
                     ->label('Actividad')
                     ->badge()
                     ->colors([
-                        'succes' => 'taller',
-                        'succes' => 'tema',
+                        'success' => 'taller',
+                        'success' => 'tema',
                         'warning' => 'manualidad',
-                        'warining' => 'otro',
+                        'danger' => 'otro',
                     ])
                     ->searchable(),
                 /*Tables\Columns\TextColumn::make('descripcion')
@@ -220,6 +222,19 @@ class PlanificacionesResource extends Resource
                             ->hiddenLabel(),
                     ])
                     ->collapsible(),
+
+                 /*InfolistComponents\Section::make('comentarios')
+                    ->label('Comentarios')
+                    ->schema([
+                        InfolistComponents\Repeater::make('comentarios')
+                            ->relationship('comentarios')
+                            ->schema([
+                                InfolistComponents\TextEntry::make('comentario'),
+                                InfolistComponents\TextEntry::make('nombre_usuario')
+                                    ->label('Usuario'),
+                            ]),
+                    ])
+                    ->collapsible(),*/
                 Components\Section::make('created_at')
                     ->label('Fechas')
                     ->columns(2)

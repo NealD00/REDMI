@@ -31,5 +31,5 @@ class AsistenciasAdolescentes extends Model
     {
         return $this->hasMany(aintermedios::class,'asistencias_adolescentes_id','id');
     }
-
+    
 }

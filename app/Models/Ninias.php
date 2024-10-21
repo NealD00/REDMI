@@ -24,6 +24,13 @@ class Ninias extends Model
         return $this->belongsTo(EspacioSeguro::class,'espacio_seguros_id');
     }
 
+    public function asistencianinias()
+    {
+        // belongsToMany(asistencia::class, tabla_pivote, clave_foránea_en_pivote, clave_foránea_relacionada)
+        return $this->belongsToMany(AsistenciaNinias::class, 'nintermedios', 'ninias_id', 'asistencia_ninias_id')
+                    ->withPivot('asistio'); // Incluye el campo asistio desde la tabla pivote
+    }
+
     protected $fillable = [
         'primer_nombre',
         'segundo_nombre',
